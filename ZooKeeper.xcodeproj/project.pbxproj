@@ -15,6 +15,10 @@
 		34A9634A1C64501400CCCA56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34A963481C64501400CCCA56 /* LaunchScreen.storyboard */; };
 		34A963551C64501400CCCA56 /* ZooKeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963541C64501400CCCA56 /* ZooKeeperTests.swift */; };
 		34A963601C64501400CCCA56 /* ZooKeeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9635F1C64501400CCCA56 /* ZooKeeperUITests.swift */; };
+		34A9636E1C64541A00CCCA56 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A9636D1C64541A00CCCA56 /* SwiftyJSON.framework */; };
+		34A963721C64565E00CCCA56 /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963711C64565E00CCCA56 /* Animals.swift */; };
+		34A963741C64567400CCCA56 /* AnimalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963731C64567400CCCA56 /* AnimalFactory.swift */; };
+		34A963781C64592200CCCA56 /* zoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 34A963771C64592200CCCA56 /* zoo.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		34A9635B1C64501400CCCA56 /* ZooKeeperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZooKeeperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A9635F1C64501400CCCA56 /* ZooKeeperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooKeeperUITests.swift; sourceTree = "<group>"; };
 		34A963611C64501400CCCA56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34A9636D1C64541A00CCCA56 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		34A963711C64565E00CCCA56 /* Animals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
+		34A963731C64567400CCCA56 /* AnimalFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFactory.swift; sourceTree = "<group>"; };
+		34A963771C64592200CCCA56 /* zoo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zoo.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34A9636E1C64541A00CCCA56 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,9 +112,11 @@
 				34A9633F1C64501400CCCA56 /* MasterViewController.swift */,
 				34A963411C64501400CCCA56 /* DetailViewController.swift */,
 				34A963431C64501400CCCA56 /* Main.storyboard */,
+				34A963701C6455BB00CCCA56 /* Models */,
 				34A963461C64501400CCCA56 /* Assets.xcassets */,
 				34A963481C64501400CCCA56 /* LaunchScreen.storyboard */,
 				34A9634B1C64501400CCCA56 /* Info.plist */,
+				34A9636D1C64541A00CCCA56 /* SwiftyJSON.framework */,
 			);
 			path = ZooKeeper;
 			sourceTree = "<group>";
@@ -128,6 +139,16 @@
 			path = ZooKeeperUITests;
 			sourceTree = "<group>";
 		};
+		34A963701C6455BB00CCCA56 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34A963711C64565E00CCCA56 /* Animals.swift */,
+				34A963731C64567400CCCA56 /* AnimalFactory.swift */,
+				34A963771C64592200CCCA56 /* zoo.json */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +159,7 @@
 				34A963361C64501400CCCA56 /* Sources */,
 				34A963371C64501400CCCA56 /* Frameworks */,
 				34A963381C64501400CCCA56 /* Resources */,
+				34A9636F1C64544500CCCA56 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -235,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34A963781C64592200CCCA56 /* zoo.json in Resources */,
 				34A9634A1C64501400CCCA56 /* LaunchScreen.storyboard in Resources */,
 				34A963471C64501400CCCA56 /* Assets.xcassets in Resources */,
 				34A963451C64501400CCCA56 /* Main.storyboard in Resources */,
@@ -257,12 +280,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		34A9636F1C64544500CCCA56 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		34A963361C64501400CCCA56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				34A963421C64501400CCCA56 /* DetailViewController.swift in Sources */,
+				34A963741C64567400CCCA56 /* AnimalFactory.swift in Sources */,
+				34A963721C64565E00CCCA56 /* Animals.swift in Sources */,
 				34A963401C64501400CCCA56 /* MasterViewController.swift in Sources */,
 				34A9633E1C64501400CCCA56 /* AppDelegate.swift in Sources */,
 			);
@@ -404,10 +446,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZooKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctharper.ZooKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -415,10 +463,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZooKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctharper.ZooKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
