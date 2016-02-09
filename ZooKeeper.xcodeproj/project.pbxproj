@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3412B3591C69A05F0075EB18 /* AnimalFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412B3581C69A05F0075EB18 /* AnimalFactoryTest.swift */; };
 		34A9633E1C64501400CCCA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9633D1C64501400CCCA56 /* AppDelegate.swift */; };
 		34A963401C64501400CCCA56 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9633F1C64501400CCCA56 /* MasterViewController.swift */; };
 		34A963421C64501400CCCA56 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963411C64501400CCCA56 /* DetailViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3412B3581C69A05F0075EB18 /* AnimalFactoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFactoryTest.swift; sourceTree = "<group>"; };
 		34A9633A1C64501400CCCA56 /* ZooKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZooKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A9633D1C64501400CCCA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34A9633F1C64501400CCCA56 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		34A963531C64501400CCCA56 /* ZooKeeperTests */ = {
 			isa = PBXGroup;
 			children = (
+				3412B3581C69A05F0075EB18 /* AnimalFactoryTest.swift */,
 				34A963541C64501400CCCA56 /* ZooKeeperTests.swift */,
 				34A963561C64501400CCCA56 /* Info.plist */,
 			);
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3412B3591C69A05F0075EB18 /* AnimalFactoryTest.swift in Sources */,
 				34A963551C64501400CCCA56 /* ZooKeeperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,6 +547,7 @@
 				34A963661C64501400CCCA56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34A963671C64501400CCCA56 /* Build configuration list for PBXNativeTarget "ZooKeeperTests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +556,7 @@
 				34A963691C64501400CCCA56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34A9636A1C64501400CCCA56 /* Build configuration list for PBXNativeTarget "ZooKeeperUITests" */ = {
 			isa = XCConfigurationList;
@@ -559,6 +565,7 @@
 				34A9636C1C64501400CCCA56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

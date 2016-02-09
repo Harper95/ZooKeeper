@@ -10,7 +10,12 @@ import Foundation
 import SwiftyJSON
 
 public class AnimalFactory {
-    
+    /**
+     Grabs a JSON file
+     - Parameters: 
+        - name: the file name
+     - Returns: an Animal array
+    */
     public static func zooFromJSONFileNamed(name: String) -> [Animal]? {
         if let path = NSBundle.mainBundle().pathForResource("zoo", ofType: "json"),
             let contentData = NSFileManager.defaultManager().contentsAtPath(path) {
@@ -35,11 +40,12 @@ public class AnimalFactory {
         
         let color: String = json["color"].stringValue
         let type: String = json["type"].stringValue
+        let isMale: Bool = json["isMale"].boolValue
         
         if type == "Duck" {
-            return Duck(color: color)
+            return Duck(color: color, isMale: isMale)
         } else if type == "Fish" {
-            return Fish(color: color)
+            return Fish(color: color, isMale: isMale)
         }
         
         return nil
