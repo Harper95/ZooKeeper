@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3409B25D1C6C2AD500CE5211 /* AnimalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3409B25C1C6C2AD500CE5211 /* AnimalTest.swift */; };
+		3409B25F1C6C325900CE5211 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3409B25E1C6C325900CE5211 /* AnimalTableViewCell.swift */; };
+		3409B2631C6C3F6900CE5211 /* AnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3409B2621C6C3F6900CE5211 /* AnimalViewController.swift */; };
 		3412B3591C69A05F0075EB18 /* AnimalFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412B3581C69A05F0075EB18 /* AnimalFactoryTest.swift */; };
 		34A9633E1C64501400CCCA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9633D1C64501400CCCA56 /* AppDelegate.swift */; };
 		34A963401C64501400CCCA56 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9633F1C64501400CCCA56 /* MasterViewController.swift */; };
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3409B25C1C6C2AD500CE5211 /* AnimalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalTest.swift; sourceTree = "<group>"; };
+		3409B25E1C6C325900CE5211 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
+		3409B2621C6C3F6900CE5211 /* AnimalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalViewController.swift; sourceTree = "<group>"; };
 		3412B3581C69A05F0075EB18 /* AnimalFactoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFactoryTest.swift; sourceTree = "<group>"; };
 		34A9633A1C64501400CCCA56 /* ZooKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZooKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A9633D1C64501400CCCA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +119,8 @@
 				34A9633D1C64501400CCCA56 /* AppDelegate.swift */,
 				34A9633F1C64501400CCCA56 /* MasterViewController.swift */,
 				34A963411C64501400CCCA56 /* DetailViewController.swift */,
+				3409B2621C6C3F6900CE5211 /* AnimalViewController.swift */,
+				3409B25E1C6C325900CE5211 /* AnimalTableViewCell.swift */,
 				34A963431C64501400CCCA56 /* Main.storyboard */,
 				34A963701C6455BB00CCCA56 /* Models */,
 				34A963461C64501400CCCA56 /* Assets.xcassets */,
@@ -126,6 +134,7 @@
 		34A963531C64501400CCCA56 /* ZooKeeperTests */ = {
 			isa = PBXGroup;
 			children = (
+				3409B25C1C6C2AD500CE5211 /* AnimalTest.swift */,
 				3412B3581C69A05F0075EB18 /* AnimalFactoryTest.swift */,
 				34A963541C64501400CCCA56 /* ZooKeeperTests.swift */,
 				34A963561C64501400CCCA56 /* Info.plist */,
@@ -306,8 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				34A963421C64501400CCCA56 /* DetailViewController.swift in Sources */,
+				3409B2631C6C3F6900CE5211 /* AnimalViewController.swift in Sources */,
 				34A963741C64567400CCCA56 /* AnimalFactory.swift in Sources */,
 				34A963721C64565E00CCCA56 /* Animals.swift in Sources */,
+				3409B25F1C6C325900CE5211 /* AnimalTableViewCell.swift in Sources */,
 				34A963401C64501400CCCA56 /* MasterViewController.swift in Sources */,
 				34A9633E1C64501400CCCA56 /* AppDelegate.swift in Sources */,
 			);
@@ -318,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3412B3591C69A05F0075EB18 /* AnimalFactoryTest.swift in Sources */,
+				3409B25D1C6C2AD500CE5211 /* AnimalTest.swift in Sources */,
 				34A963551C64501400CCCA56 /* ZooKeeperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

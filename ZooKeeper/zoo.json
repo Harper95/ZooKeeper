@@ -1,23 +1,16 @@
-
 {
     "animals" : [
-                 {"type" : "Duck", "color" : "yellow", "isMale": true},
-                 {"type" : "Fish", "color" : "rainbow", "isMale": false},
-                 {"type" : "Fish", "color" : "brown", "isMale": true},
-                 {"type" : "Fish", "color" : "blue", "isMale": false},
-                 {"type" : "Duck", "color" : "brown", "isMale": true},
-                 {"type" : "Bear", "color" : "brown", "isMale": true},
-                 {"type" : "Duck", "color" : "red", "isMale": false},
-                 {"type" : "Duck", "color" : "orange", "isMale": true},
-                 {"type" : "Duck", "color" : "green", "isMale": false},
-                 {"type" : "Duck", "color" : "blue", "isMale": false},
-                 {"type" : "Duck", "color" : "indigo", "isMale": true},
-                 {"type" : "Duck", "color" : "black", "isMale": false},
-                 {"type" : "Fish", "color" : "red", "isMale": true},
-                 {"type" : "Fish", "color" : "orange", "isMale": false},
-                 {"type" : "Fish", "color" : "yellow", "isMale": true},
-                 {"type" : "Fish", "color" : "green", "isMale": true},
-                 {"type" : "Fish", "color" : "indigo", "isMale": false},
-                 {"type" : "Fish", "color" : "violet", "isMale": true}
-                 ]
+                 {"type": "Duck", "name":"Donald", "color":"yellow", "isMale" : true},
+                 {"type": "Duck", "name":"Darkwing", "color":"brown", "isMale" : false},
+                 {"type": "Fish", "name":"Jabber Jaw", "color":"blue", "isMale" : true},
+                 {"type": "Fish", "name":"Charlie", "color":"brown", "isMale" : false},
+                 {"type": "Bear", "name":"Yogi", "color":"yellow", "isMale" : true},
+                 {"type": "Lion", "name":"Lion-o", "color":"brown", "isMale" : true},
+                 {"type": "Seal", "name":"Jerry", "color":"blue", "isMale" : false}
+                 ],
+    
+    "staff" : [
+               {"type": "ZooKeeper", "name":"Pete", "isMale" : true},
+               {"type": "TicketTaker", "name":"Sally", "isMale" : false}
+               ]
 }

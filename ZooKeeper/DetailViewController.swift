@@ -10,12 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var colorTextField: UITextField!
-    @IBOutlet weak var legsTextField: UITextField!
-    @IBOutlet weak var isMaleSwitch: UISwitch!
-
-    var detailItem: Animal? {
+    var detailItem: AnyObject? {
         didSet {
             // Update the view.
             self.configureView()
@@ -24,12 +19,7 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let animal = self.detailItem {
-            nameTextField?.text = animal.name
-            colorTextField?.text = animal.color
-            legsTextField?.text = "\(animal.legCount ?? 0)"
-            isMaleSwitch?.on = animal.isMale
-        }
+        
     }
 
     override func viewDidLoad() {

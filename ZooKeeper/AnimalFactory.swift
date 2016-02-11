@@ -38,16 +38,24 @@ public class AnimalFactory {
     
     public static func animalFromJSON(json: JSON) -> Animal? {
         
+        let name: String = json["name"].stringValue
         let color: String = json["color"].stringValue
         let type: String = json["type"].stringValue
         let isMale: Bool = json["isMale"].boolValue
         
-        if type == "Duck" {
-            return Duck(color: color, isMale: isMale)
-        } else if type == "Fish" {
-            return Fish(color: color, isMale: isMale)
+        switch type {
+        case "Duck":
+            return Duck(name: name, color: color, isMale: isMale)
+        case "Fish":
+            return Fish(name: name, color: color, isMale: isMale)
+        case "Bear":
+            return Bear(name: name, color: color, isMale: isMale)
+        case "Lion":
+            return Lion(name: name, color: color, isMale: isMale)
+        case "Seal":
+            return Seal(name: name, color: color, isMale: isMale)
+        default:
+            return nil
         }
-        
-        return nil
     }
 }

@@ -26,6 +26,7 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
+        tableView.rowHeight = 85
         data = AnimalFactory.zooFromJSONFileNamed("zoo")
     }
 
@@ -48,7 +49,7 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "AnimalDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = data![indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
@@ -73,10 +74,11 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
 
-        let object = data![indexPath.row]
-        cell.textLabel!.text = "\(object.color) \(object.name)"
+        let animal = data![indexPath.row]
+        cell.animal = animal
+        cell.configureView()
         return cell
     }
 
