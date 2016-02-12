@@ -30,9 +30,14 @@ class AnimalTableViewCell: UITableViewCell {
 
     func configureView() {
         if let animal = animal {
-            iconImageView.image = animal.image()
             topLabel.text = animal.name
             bottomLabel.text = animal.report()
+            
+            if let _ = animal.photo {
+                iconImageView.image = animal.photo
+            } else {
+                iconImageView.image = animal.image()
+            }
         }
     }
 }

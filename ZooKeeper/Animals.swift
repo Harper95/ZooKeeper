@@ -6,7 +6,6 @@
 //  Copyright © 2016 Clayton Harper. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol Quackable {
@@ -24,9 +23,9 @@ public class Animal {
     var name: String
     var color: String
     var isMale: Bool
-    
     var currentWeight: Float?
     var birthday: NSData?
+    var photo: UIImage?
     
     public init(type: String, name: String, color: String, isMale: Bool) {
         self.type = type

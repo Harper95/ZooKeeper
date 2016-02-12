@@ -23,6 +23,13 @@
 		34A963721C64565E00CCCA56 /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963711C64565E00CCCA56 /* Animals.swift */; };
 		34A963741C64567400CCCA56 /* AnimalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963731C64567400CCCA56 /* AnimalFactory.swift */; };
 		34A963781C64592200CCCA56 /* zoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 34A963771C64592200CCCA56 /* zoo.json */; };
+		34AC1E3D1C6D800E009B26FF /* CTHHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */; };
+		34AC1E3F1C6D8AB6009B26FF /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E3E1C6D8AB6009B26FF /* Staff.swift */; };
+		34AC1E411C6D8B58009B26FF /* StaffFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E401C6D8B58009B26FF /* StaffFactory.swift */; };
+		34AC1E431C6D8E39009B26FF /* StaffFactoryTesy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E421C6D8E39009B26FF /* StaffFactoryTesy.swift */; };
+		34AC1E451C6D8F3F009B26FF /* StaffTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E441C6D8F3F009B26FF /* StaffTest.swift */; };
+		34AC1E471C6D90BA009B26FF /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E461C6D90BA009B26FF /* StaffViewController.swift */; };
+		34AC1E491C6D90D3009B26FF /* StaffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +72,13 @@
 		34A963711C64565E00CCCA56 /* Animals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
 		34A963731C64567400CCCA56 /* AnimalFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFactory.swift; sourceTree = "<group>"; };
 		34A963771C64592200CCCA56 /* zoo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zoo.json; sourceTree = "<group>"; };
+		34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTHHelper.swift; sourceTree = "<group>"; };
+		34AC1E3E1C6D8AB6009B26FF /* Staff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
+		34AC1E401C6D8B58009B26FF /* StaffFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffFactory.swift; sourceTree = "<group>"; };
+		34AC1E421C6D8E39009B26FF /* StaffFactoryTesy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffFactoryTesy.swift; sourceTree = "<group>"; };
+		34AC1E441C6D8F3F009B26FF /* StaffTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTest.swift; sourceTree = "<group>"; };
+		34AC1E461C6D90BA009B26FF /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
+		34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,12 +130,13 @@
 		34A9633C1C64501400CCCA56 /* ZooKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				34A963431C64501400CCCA56 /* Main.storyboard */,
 				34A9633D1C64501400CCCA56 /* AppDelegate.swift */,
 				34A9633F1C64501400CCCA56 /* MasterViewController.swift */,
 				34A963411C64501400CCCA56 /* DetailViewController.swift */,
-				3409B2621C6C3F6900CE5211 /* AnimalViewController.swift */,
-				3409B25E1C6C325900CE5211 /* AnimalTableViewCell.swift */,
-				34A963431C64501400CCCA56 /* Main.storyboard */,
+				34AC1E4A1C6D9157009B26FF /* Animal */,
+				34AC1E4B1C6D916A009B26FF /* Staff */,
+				34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */,
 				34A963701C6455BB00CCCA56 /* Models */,
 				34A963461C64501400CCCA56 /* Assets.xcassets */,
 				34A963481C64501400CCCA56 /* LaunchScreen.storyboard */,
@@ -134,6 +149,8 @@
 		34A963531C64501400CCCA56 /* ZooKeeperTests */ = {
 			isa = PBXGroup;
 			children = (
+				34AC1E441C6D8F3F009B26FF /* StaffTest.swift */,
+				34AC1E421C6D8E39009B26FF /* StaffFactoryTesy.swift */,
 				3409B25C1C6C2AD500CE5211 /* AnimalTest.swift */,
 				3412B3581C69A05F0075EB18 /* AnimalFactoryTest.swift */,
 				34A963541C64501400CCCA56 /* ZooKeeperTests.swift */,
@@ -156,9 +173,29 @@
 			children = (
 				34A963711C64565E00CCCA56 /* Animals.swift */,
 				34A963731C64567400CCCA56 /* AnimalFactory.swift */,
+				34AC1E3E1C6D8AB6009B26FF /* Staff.swift */,
+				34AC1E401C6D8B58009B26FF /* StaffFactory.swift */,
 				34A963771C64592200CCCA56 /* zoo.json */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		34AC1E4A1C6D9157009B26FF /* Animal */ = {
+			isa = PBXGroup;
+			children = (
+				3409B2621C6C3F6900CE5211 /* AnimalViewController.swift */,
+				3409B25E1C6C325900CE5211 /* AnimalTableViewCell.swift */,
+			);
+			name = Animal;
+			sourceTree = "<group>";
+		};
+		34AC1E4B1C6D916A009B26FF /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				34AC1E461C6D90BA009B26FF /* StaffViewController.swift */,
+				34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */,
+			);
+			name = Staff;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,13 +351,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34AC1E3F1C6D8AB6009B26FF /* Staff.swift in Sources */,
 				34A963421C64501400CCCA56 /* DetailViewController.swift in Sources */,
+				34AC1E3D1C6D800E009B26FF /* CTHHelper.swift in Sources */,
 				3409B2631C6C3F6900CE5211 /* AnimalViewController.swift in Sources */,
 				34A963741C64567400CCCA56 /* AnimalFactory.swift in Sources */,
+				34AC1E471C6D90BA009B26FF /* StaffViewController.swift in Sources */,
 				34A963721C64565E00CCCA56 /* Animals.swift in Sources */,
 				3409B25F1C6C325900CE5211 /* AnimalTableViewCell.swift in Sources */,
 				34A963401C64501400CCCA56 /* MasterViewController.swift in Sources */,
 				34A9633E1C64501400CCCA56 /* AppDelegate.swift in Sources */,
+				34AC1E491C6D90D3009B26FF /* StaffTableViewCell.swift in Sources */,
+				34AC1E411C6D8B58009B26FF /* StaffFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +371,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3412B3591C69A05F0075EB18 /* AnimalFactoryTest.swift in Sources */,
+				34AC1E451C6D8F3F009B26FF /* StaffTest.swift in Sources */,
 				3409B25D1C6C2AD500CE5211 /* AnimalTest.swift in Sources */,
+				34AC1E431C6D8E39009B26FF /* StaffFactoryTesy.swift in Sources */,
 				34A963551C64501400CCCA56 /* ZooKeeperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

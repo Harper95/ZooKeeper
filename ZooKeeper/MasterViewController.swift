@@ -12,7 +12,8 @@ import SwiftyJSON
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var data: [Animal]?
+    var animalData: [Animal]?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +28,13 @@ class MasterViewController: UITableViewController {
         }
         
         tableView.rowHeight = 85
-        data = AnimalFactory.zooFromJSONFileNamed("zoo")
+        animalData = AnimalFactory.zooFromJSONFileNamed("zoo")
     }
 
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +53,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AnimalDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = data![indexPath.row]
+                let object = animalData![indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -67,7 +69,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let data = data {
+        if let data = animalData {
             return data.count
         }
         return 0
@@ -76,10 +78,11 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
 
-        let animal = data![indexPath.row]
+        let animal: Animal = animalData![indexPath.row]
         cell.animal = animal
         cell.configureView()
         return cell
+        
     }
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -89,7 +92,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            data!.removeAtIndex(indexPath.row)
+            animalData!.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
