@@ -13,7 +13,6 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var animalData: [Animal]?
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

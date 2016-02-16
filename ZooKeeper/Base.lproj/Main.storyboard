@@ -107,7 +107,7 @@
                                     <segue destination="Ds4-fL-uPh" kind="showDetail" identifier="AnimalDetail" id="igS-2W-D41"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffCell" rowHeight="85" id="fsF-tS-dJN">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffCell" rowHeight="85" id="fsF-tS-dJN" customClass="StaffTableViewCell" customModule="ZooKeeper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="215" width="600" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fsF-tS-dJN" id="svN-7x-uGW">
@@ -145,6 +145,12 @@
                                         <constraint firstItem="9nY-Tq-foz" firstAttribute="bottom" secondItem="rzE-rZ-kpO" secondAttribute="bottom" id="kZM-Vd-Ya6"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bottomLabelStaff" destination="9nY-Tq-foz" id="aJ5-5R-Wxx"/>
+                                    <outlet property="iconImageViewStaff" destination="rzE-rZ-kpO" id="7De-B6-grE"/>
+                                    <outlet property="topLabelStaff" destination="kGV-16-W82" id="gE4-g7-ZTr"/>
+                                    <segue destination="Zpx-Al-Y0i" kind="showDetail" id="cdN-s0-np3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -154,9 +160,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
-                    <connections>
-                        <segue destination="Zpx-Al-Y0i" kind="showDetail" identifier="StaffDetail" id="euY-wW-8AY"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
