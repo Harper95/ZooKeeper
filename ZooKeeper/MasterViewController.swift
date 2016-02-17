@@ -104,6 +104,15 @@ class MasterViewController: UITableViewController {
         }
     }
     
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        if let viewController = storyboard!.instantiateViewControllerWithIdentifier("StaffViewController") as? StaffViewController {
+//            let staff: Staff = data[staffKey]![indexPath.row] as! Staff
+//            viewController.staff = staff
+//            navigationController!.pushViewController(viewController, animated: true)
+//        }
+//    }
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true

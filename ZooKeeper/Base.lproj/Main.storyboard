@@ -191,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="RnD-nV-6B8" kind="relationship" relationship="rootViewController" id="4Ga-db-4KS"/>
+                        <segue destination="lan-KY-abi" kind="relationship" relationship="rootViewController" id="w2z-kp-6VI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqw-d0-NgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,7 +261,7 @@
                                     <action selector="controlChanged:" destination="lan-KY-abi" eventType="valueChanged" id="nm1-Mq-YCa"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tb-VL-Yzd">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tb-VL-Yzd">
                                 <rect key="frame" x="530" y="202" width="50" height="50"/>
                                 <state key="normal" image="camera"/>
                                 <connections>
@@ -308,7 +308,7 @@
         <!--Staff View Controller-->
         <scene sceneID="UtB-Xr-Zjv">
             <objects>
-                <viewController id="RnD-nV-6B8" customClass="StaffViewController" customModule="ZooKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StaffViewController" id="RnD-nV-6B8" customClass="StaffViewController" customModule="ZooKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RK9-BK-6En"/>
                         <viewControllerLayoutGuide type="bottom" id="iZ1-Uz-Nsd"/>
@@ -317,7 +317,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Staff Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dI3-cc-vcf">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Staff Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dI3-cc-vcf">
                                 <rect key="frame" x="20" y="72" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -325,7 +325,7 @@
                                     <action selector="controlChanged:" destination="RnD-nV-6B8" eventType="editingDidEnd" id="pSR-az-uc9"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Staff Weight lbs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fS0-nU-Ybw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Staff Weight lbs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fS0-nU-Ybw">
                                 <rect key="frame" x="20" y="110" width="175" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="VAI-Zd-kSt"/>
@@ -336,7 +336,7 @@
                                     <action selector="controlChanged:" destination="RnD-nV-6B8" eventType="editingDidEnd" id="bBW-A5-dLn"/>
                                 </connections>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LYs-BD-7VK">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LYs-BD-7VK">
                                 <rect key="frame" x="20" y="148" width="117" height="29"/>
                                 <segments>
                                     <segment title="Male"/>
@@ -346,19 +346,19 @@
                                     <action selector="controlChanged:" destination="RnD-nV-6B8" eventType="valueChanged" id="qTP-eV-REK"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3d-rC-ieM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3d-rC-ieM">
                                 <rect key="frame" x="20" y="184" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwo-H2-KG6">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwo-H2-KG6">
                                 <rect key="frame" x="530" y="164" width="50" height="50"/>
                                 <state key="normal" image="camera"/>
                                 <connections>
                                     <action selector="cameraTouched:" destination="RnD-nV-6B8" eventType="touchUpInside" id="a33-f5-rXc"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vZc-di-g8E">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vZc-di-g8E">
                                 <rect key="frame" x="20" y="222" width="560" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="476944105.36975098">
                                     <!--2016-02-12 04:28:25 +0000-->
@@ -404,4 +404,7 @@
     <resources>
         <image name="camera" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cw0-kU-P4o"/>
+    </inferredMetricsTieBreakers>
 </document>

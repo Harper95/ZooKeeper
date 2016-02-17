@@ -17,6 +17,24 @@ class AnimalViewController: DetailViewController {
     @IBOutlet weak var maleFemaleSwitch: UISegmentedControl!
     @IBOutlet weak var birthdayDatePicker: UIDatePicker!
     
+//    var animal: Animal? {
+//        didSet {
+//            nameTextField.text = animal.name
+//            
+//            // Customize for Animal View
+//        }
+//    }
+//    
+//    var staff: Staff? {
+//        didSet {
+//            if staff != nil {
+//                
+//            }
+//            
+//            // Custom for Staff View
+//        }
+//    }
+    
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
