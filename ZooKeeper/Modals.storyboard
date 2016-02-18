@@ -18,70 +18,151 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Xe-vI-YJn">
-                                <rect key="frame" x="20" y="28" width="560" height="515"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Xe-vI-YJn">
+                                <rect key="frame" x="20" y="49" width="560" height="505"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9OX-qn-P0F">
-                                    <size key="itemSize" width="150" height="149"/>
+                                    <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="krp-aM-CcI" customClass="AnimalCollectionViewCell" customModule="ZooKeeper" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="149"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalCollectionView1" id="krp-aM-CcI" customClass="AnimalCollectionViewCell" customModule="ZooKeeper" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="136" placeholderIntrinsicHeight="136" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vYz-TA-no0">
-                                                    <rect key="frame" x="8" y="8" width="134" height="133"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="gKq-FS-X4N">
-                                                            <rect key="frame" x="42" y="0.0" width="50" height="112"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ko9-9f-8WL">
-                                                            <rect key="frame" x="46" y="112" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ko9-9f-8WL">
+                                                    <rect key="frame" x="54" y="121" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" placeholderIntrinsicWidth="124" placeholderIntrinsicHeight="2" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="gKq-FS-X4N">
+                                                    <rect key="frame" x="8" y="8" width="134" height="105"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="vYz-TA-no0" firstAttribute="top" secondItem="krp-aM-CcI" secondAttribute="topMargin" id="0vP-R7-1XF"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="vYz-TA-no0" secondAttribute="trailing" id="7Jb-kV-nQa"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="vYz-TA-no0" secondAttribute="bottom" id="Drg-ly-3eI"/>
-                                            <constraint firstItem="vYz-TA-no0" firstAttribute="leading" secondItem="krp-aM-CcI" secondAttribute="leadingMargin" id="zSx-QG-8iO"/>
+                                            <constraint firstAttribute="leadingMargin" secondItem="gKq-FS-X4N" secondAttribute="leading" id="BIg-ou-FpW"/>
+                                            <constraint firstAttribute="topMargin" secondItem="gKq-FS-X4N" secondAttribute="top" id="EnE-su-0Mu"/>
+                                            <constraint firstItem="Ko9-9f-8WL" firstAttribute="centerX" secondItem="krp-aM-CcI" secondAttribute="centerX" id="StP-jt-lNG"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Ko9-9f-8WL" secondAttribute="bottom" id="cDa-ue-waz"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="gKq-FS-X4N" secondAttribute="trailing" id="lom-QD-Ixu"/>
+                                            <constraint firstItem="Ko9-9f-8WL" firstAttribute="top" secondItem="gKq-FS-X4N" secondAttribute="bottom" constant="8" id="xou-a3-byH"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="animalImage" destination="gKq-FS-X4N" id="FHB-hs-8nB"/>
                                             <outlet property="animalLabel" destination="Ko9-9f-8WL" id="EWX-C0-ACL"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalCollectionView2" id="Mqr-0d-RrO" customClass="AnimalCollectionViewCell" customModule="ZooKeeper" customModuleProvider="target">
+                                        <rect key="frame" x="205" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA5-xM-WsA">
+                                                    <rect key="frame" x="54" y="121" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" placeholderIntrinsicWidth="124" placeholderIntrinsicHeight="2" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="di1-rm-ep9">
+                                                    <rect key="frame" x="8" y="8" width="134" height="105"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="aA5-xM-WsA" firstAttribute="top" secondItem="di1-rm-ep9" secondAttribute="bottom" constant="8" id="Ce6-P9-YLu"/>
+                                            <constraint firstAttribute="leadingMargin" secondItem="di1-rm-ep9" secondAttribute="leading" id="a9z-XI-afp"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="di1-rm-ep9" secondAttribute="trailing" id="dpu-rU-bKU"/>
+                                            <constraint firstItem="aA5-xM-WsA" firstAttribute="centerX" secondItem="Mqr-0d-RrO" secondAttribute="centerX" id="egb-Zm-ldF"/>
+                                            <constraint firstAttribute="topMargin" secondItem="di1-rm-ep9" secondAttribute="top" id="rKd-0C-GZa"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="aA5-xM-WsA" secondAttribute="bottom" id="wRZ-Cb-DfG"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="animalImage" destination="di1-rm-ep9" id="1EE-Rv-fGP"/>
+                                            <outlet property="animalLabel" destination="aA5-xM-WsA" id="bck-Rv-QlC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalCollectionView3" id="FVQ-0i-qEE" customClass="AnimalCollectionViewCell" customModule="ZooKeeper" customModuleProvider="target">
+                                        <rect key="frame" x="410" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpi-Fi-sis">
+                                                    <rect key="frame" x="54" y="121" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" placeholderIntrinsicWidth="124" placeholderIntrinsicHeight="2" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="WqX-73-A7T">
+                                                    <rect key="frame" x="8" y="8" width="134" height="105"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="topMargin" secondItem="WqX-73-A7T" secondAttribute="top" id="Dgp-nJ-qxh"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Hpi-Fi-sis" secondAttribute="bottom" id="Jav-c7-mcU"/>
+                                            <constraint firstItem="Hpi-Fi-sis" firstAttribute="top" secondItem="WqX-73-A7T" secondAttribute="bottom" constant="8" id="NdI-zU-sf5"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="WqX-73-A7T" secondAttribute="trailing" id="rMk-tV-iPT"/>
+                                            <constraint firstAttribute="leadingMargin" secondItem="WqX-73-A7T" secondAttribute="leading" id="sC6-hB-NUQ"/>
+                                            <constraint firstItem="Hpi-Fi-sis" firstAttribute="centerX" secondItem="FVQ-0i-qEE" secondAttribute="centerX" id="vaG-Bk-WmG"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="animalImage" destination="WqX-73-A7T" id="rWH-ZQ-jVr"/>
+                                            <outlet property="animalLabel" destination="Hpi-Fi-sis" id="Fh9-ad-iw2"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnf-Ru-Dhw">
-                                <rect key="frame" x="277" y="562" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="273" y="562" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
                                 <connections>
-                                    <action selector="dismissTouched:" destination="aYN-97-mt6" eventType="touchUpInside" id="Hms-OQ-9Up"/>
+                                    <action selector="dismissTouched:" destination="aYN-97-mt6" eventType="touchUpInside" id="yW3-Uu-6nV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fga-Ai-amX">
+                                <rect key="frame" x="279" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Xe-vI-YJn" secondAttribute="trailing" id="Hce-bW-2i4"/>
                             <constraint firstItem="qnf-Ru-Dhw" firstAttribute="centerX" secondItem="BDL-CD-S9i" secondAttribute="centerX" id="Hid-7c-UxT"/>
                             <constraint firstItem="nqm-wi-Qhz" firstAttribute="top" secondItem="qnf-Ru-Dhw" secondAttribute="bottom" constant="8" id="Hts-pK-AJu"/>
+                            <constraint firstItem="3Xe-vI-YJn" firstAttribute="top" secondItem="Fga-Ai-amX" secondAttribute="bottom" constant="8" id="Jlr-YG-lp7"/>
+                            <constraint firstItem="qnf-Ru-Dhw" firstAttribute="top" secondItem="3Xe-vI-YJn" secondAttribute="bottom" constant="8" id="OE4-WI-CW0"/>
+                            <constraint firstItem="Fga-Ai-amX" firstAttribute="top" secondItem="bWG-Cs-g0M" secondAttribute="bottom" id="Qhb-Fc-W5s"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="3Xe-vI-YJn" secondAttribute="leading" id="iXL-Vc-Qjb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="3Xe-vI-YJn" secondAttribute="leading" id="mbr-ZB-Lr1"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="3Xe-vI-YJn" secondAttribute="leading" id="uET-Dm-Vah"/>
+                            <constraint firstItem="Fga-Ai-amX" firstAttribute="centerX" secondItem="BDL-CD-S9i" secondAttribute="centerX" id="wkD-C4-rNB"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="iXL-Vc-Qjb"/>
+                                <exclude reference="uET-Dm-Vah"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwx-ic-z4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973" y="-99"/>
+            <point key="canvasLocation" x="973" y="-84"/>
         </scene>
     </scenes>
     <resources>

@@ -24,7 +24,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
-        cell.nameLabel.text = "name"
+        cell.animalLabel.text = "name"
         return cell
     }
     override func viewDidLoad() {
