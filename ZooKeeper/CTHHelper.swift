@@ -189,4 +189,22 @@ public func CTHAlertTextFor(controller:UIViewController, title:String, message:S
     controller.presentViewController(alertController, animated: true, completion:nil)
 }
 
+public func CTHAlertFor(controller:UIViewController, title:String, message:String, okCallback:(()->Void), cancelCallback:(()->Void)?) {
+    let alertController = UIAlertController(title:title, message:message, preferredStyle: .Alert)
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        if let callback = cancelCallback {
+            callback()
+        }
+    }
+    alertController.addAction(cancelAction)
+    
+    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+        okCallback()
+    }
+    alertController.addAction(OKAction)
+    
+    controller.presentViewController(alertController, animated: true, completion:nil)
+}
+
 

@@ -30,6 +30,10 @@
 		34AC1E451C6D8F3F009B26FF /* StaffTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E441C6D8F3F009B26FF /* StaffTest.swift */; };
 		34AC1E471C6D90BA009B26FF /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E461C6D90BA009B26FF /* StaffViewController.swift */; };
 		34AC1E491C6D90D3009B26FF /* StaffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */; };
+		34F6131B1C75784C002320C2 /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F6131A1C75784C002320C2 /* TopMenuViewController.swift */; };
+		34F6131D1C757C56002320C2 /* Modals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F6131C1C757C56002320C2 /* Modals.storyboard */; };
+		34F6131F1C757C6D002320C2 /* ImageGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F6131E1C757C6D002320C2 /* ImageGalleryViewController.swift */; };
+		34F613211C757E5E002320C2 /* AnimalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F613201C757E5E002320C2 /* AnimalCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,10 @@
 		34AC1E441C6D8F3F009B26FF /* StaffTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTest.swift; sourceTree = "<group>"; };
 		34AC1E461C6D90BA009B26FF /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewCell.swift; sourceTree = "<group>"; };
+		34F6131A1C75784C002320C2 /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
+		34F6131C1C757C56002320C2 /* Modals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Modals.storyboard; sourceTree = "<group>"; };
+		34F6131E1C757C6D002320C2 /* ImageGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGalleryViewController.swift; sourceTree = "<group>"; };
+		34F613201C757E5E002320C2 /* AnimalCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,12 +140,16 @@
 			children = (
 				34A963431C64501400CCCA56 /* Main.storyboard */,
 				34A9633D1C64501400CCCA56 /* AppDelegate.swift */,
+				34F6131A1C75784C002320C2 /* TopMenuViewController.swift */,
 				34A9633F1C64501400CCCA56 /* MasterViewController.swift */,
 				34A963411C64501400CCCA56 /* DetailViewController.swift */,
+				34F6131C1C757C56002320C2 /* Modals.storyboard */,
+				34F6131E1C757C6D002320C2 /* ImageGalleryViewController.swift */,
+				34F613201C757E5E002320C2 /* AnimalCollectionViewCell.swift */,
+				34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */,
 				34AC1E4A1C6D9157009B26FF /* Animal */,
 				34AC1E4B1C6D916A009B26FF /* Staff */,
-				34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */,
-				34A963701C6455BB00CCCA56 /* Models */,
+				34A963701C6455BB00CCCA56 /* Json */,
 				34A963461C64501400CCCA56 /* Assets.xcassets */,
 				34A963481C64501400CCCA56 /* LaunchScreen.storyboard */,
 				34A9634B1C64501400CCCA56 /* Info.plist */,
@@ -168,23 +180,21 @@
 			path = ZooKeeperUITests;
 			sourceTree = "<group>";
 		};
-		34A963701C6455BB00CCCA56 /* Models */ = {
+		34A963701C6455BB00CCCA56 /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				34A963711C64565E00CCCA56 /* Animals.swift */,
-				34A963731C64567400CCCA56 /* AnimalFactory.swift */,
-				34AC1E3E1C6D8AB6009B26FF /* Staff.swift */,
-				34AC1E401C6D8B58009B26FF /* StaffFactory.swift */,
 				34A963771C64592200CCCA56 /* zoo.json */,
 			);
-			name = Models;
+			name = Json;
 			sourceTree = "<group>";
 		};
 		34AC1E4A1C6D9157009B26FF /* Animal */ = {
 			isa = PBXGroup;
 			children = (
+				34A963711C64565E00CCCA56 /* Animals.swift */,
 				3409B2621C6C3F6900CE5211 /* AnimalViewController.swift */,
 				3409B25E1C6C325900CE5211 /* AnimalTableViewCell.swift */,
+				34A963731C64567400CCCA56 /* AnimalFactory.swift */,
 			);
 			name = Animal;
 			sourceTree = "<group>";
@@ -192,8 +202,10 @@
 		34AC1E4B1C6D916A009B26FF /* Staff */ = {
 			isa = PBXGroup;
 			children = (
+				34AC1E3E1C6D8AB6009B26FF /* Staff.swift */,
 				34AC1E461C6D90BA009B26FF /* StaffViewController.swift */,
 				34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */,
+				34AC1E401C6D8B58009B26FF /* StaffFactory.swift */,
 			);
 			name = Staff;
 			sourceTree = "<group>";
@@ -306,6 +318,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34F6131D1C757C56002320C2 /* Modals.storyboard in Resources */,
 				34A963781C64592200CCCA56 /* zoo.json in Resources */,
 				34A9634A1C64501400CCCA56 /* LaunchScreen.storyboard in Resources */,
 				34A963471C64501400CCCA56 /* Assets.xcassets in Resources */,
@@ -351,6 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34F6131F1C757C6D002320C2 /* ImageGalleryViewController.swift in Sources */,
+				34F6131B1C75784C002320C2 /* TopMenuViewController.swift in Sources */,
 				34AC1E3F1C6D8AB6009B26FF /* Staff.swift in Sources */,
 				34A963421C64501400CCCA56 /* DetailViewController.swift in Sources */,
 				34AC1E3D1C6D800E009B26FF /* CTHHelper.swift in Sources */,
@@ -363,6 +378,7 @@
 				34A9633E1C64501400CCCA56 /* AppDelegate.swift in Sources */,
 				34AC1E491C6D90D3009B26FF /* StaffTableViewCell.swift in Sources */,
 				34AC1E411C6D8B58009B26FF /* StaffFactory.swift in Sources */,
+				34F613211C757E5E002320C2 /* AnimalCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
