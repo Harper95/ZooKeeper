@@ -10,5 +10,5 @@ import XCTest
 @testable import ZooKeeper
 
 class ZooKeeperTests: XCTestCase {
-    
+
 }

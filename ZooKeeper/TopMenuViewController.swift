@@ -14,6 +14,7 @@ class TopMenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let _ = ZooData.sharedInstance.zoo
     }
 
     override func didReceiveMemoryWarning() {
