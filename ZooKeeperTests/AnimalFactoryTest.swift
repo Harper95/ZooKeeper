@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import ZooKeeper
-
+/*
 class AnimalFactoryTest: XCTestCase {
     
     func test_ParseValidJSONFile_CreatesAnimalArray() {
@@ -20,3 +20,4 @@ class AnimalFactoryTest: XCTestCase {
     }
     
 }
+*/

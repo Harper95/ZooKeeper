@@ -16,26 +16,7 @@ class AnimalViewController: DetailViewController {
     @IBOutlet weak var colorTextField: UITextField!
     @IBOutlet weak var maleFemaleSwitch: UISegmentedControl!
     @IBOutlet weak var birthdayDatePicker: UIDatePicker!
-    @IBOutlet weak var cameraImage: UIImageView!
-    
-    
-    //    var animal: Animal? {
-    //        didSet {
-    //            nameTextField.text = animal.name
-    //
-    //            // Customize for Animal View
-    //        }
-    //    }
-    //
-    //    var staff: Staff? {
-    //        didSet {
-    //            if staff != nil {
-    //
-    //            }
-    //
-    //            // Custom for Staff View
-    //        }
-    //    }
+    @IBOutlet weak var photoImageView: UIImageView!
     
     // MARK: -
     override func viewDidLoad() {
@@ -49,20 +30,16 @@ class AnimalViewController: DetailViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: Actions
     @IBAction func controlChanged(sender: AnyObject) {
-        
+		guard let animal = detailItem as? Animal else { return }
+		
+		animal.name = nameTextField.text!
+		animal.color = colorTextField.text!
+		animal.currentWeight = Float(weightTextField.text!)
+		animal.isMale = maleFemaleSwitch.selectedSegmentIndex == 0 ? true : false
+		animal.birthday = birthdayDatePicker.date
+		ZooData.sharedInstance.saveZoo()
     }
     @IBAction func cameraTouched(sender: AnyObject) {
         guard let animal = detailItem as? Animal else {return}
@@ -90,7 +67,7 @@ class AnimalViewController: DetailViewController {
             weightTextField?.text = "unknown"
         }
         maleFemaleSwitch?.selectedSegmentIndex = animal.isMale ? 0 : 1
-        cameraImage?.image = animal.photo ?? UIImage(named: "camera")
+        photoImageView?.image = animal.loadImage() ?? UIImage(named: "camera")
     }
 }
 
@@ -100,8 +77,9 @@ extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerCon
         picker.dismissViewControllerAnimated(true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let animal = self.detailItem as? Animal {
-                animal.photo = image
-                cameraImage.image = image
+                photoImageView.image = image
+				animal.saveImage(image)
+				ZooData.sharedInstance.saveZoo()
             }
         }
     }

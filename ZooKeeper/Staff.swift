@@ -13,7 +13,7 @@ public class Staff {
     var name: String
     var isMale: Bool
     var currentWeight: Float?
-    var birthday: NSData?
+    var birthday: NSDate?
     var photo: UIImage?
     
     public init(type: String, name: String, isMale: Bool) {
@@ -35,6 +35,10 @@ public class Staff {
     public func image() -> UIImage? {
         return UIImage(named: type.lowercaseString)
     }
+	// Maps Json Objects to Swift Objects
+	public func toDictionary() -> [String: AnyObject] {
+		return ["type": type, "name": name, "isMale": isMale]
+	}
 
 }
 public class ZooKeeper : Staff {

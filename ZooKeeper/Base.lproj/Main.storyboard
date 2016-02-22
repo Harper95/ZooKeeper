@@ -45,7 +45,6 @@
                                 <rect key="frame" x="253" y="110" width="94" height="30"/>
                                 <state key="normal" title="Image Gallery"/>
                                 <connections>
-                                    <action selector="galleryButtonPressed:" destination="E2Y-Qg-hQc" eventType="touchUpInside" id="MJJ-0Q-vol"/>
                                     <action selector="imageGalleryTapped:" destination="E2Y-Qg-hQc" eventType="touchUpInside" id="Jx2-qe-ObJ"/>
                                 </connections>
                             </button>
@@ -394,10 +393,10 @@
                     <navigationItem key="navigationItem" id="kjv-Px-Nd5"/>
                     <connections>
                         <outlet property="birthdayDatePicker" destination="kub-WT-KD3" id="qh2-Bf-MIj"/>
-                        <outlet property="cameraImage" destination="EUS-Yw-GT8" id="sno-aM-3E3"/>
                         <outlet property="colorTextField" destination="fgw-1i-U7G" id="t4Q-rp-GSF"/>
                         <outlet property="maleFemaleSwitch" destination="AwN-U0-URN" id="bf4-Bm-lu7"/>
                         <outlet property="nameTextField" destination="zxJ-fB-s4D" id="z3E-o4-AEK"/>
+                        <outlet property="photoImageView" destination="EUS-Yw-GT8" id="sno-aM-3E3"/>
                         <outlet property="weightTextField" destination="Was-Hi-54P" id="0Fx-p2-Ax5"/>
                     </connections>
                 </viewController>

@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnf-Ru-Dhw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnf-Ru-Dhw">
                                 <rect key="frame" x="273" y="562" width="54" height="30"/>
                                 <state key="normal" title="Dismiss"/>
                                 <connections>
                                     <action selector="dismissTouched:" destination="aYN-97-mt6" eventType="touchUpInside" id="yW3-Uu-6nV"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Xe-vI-YJn">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Xe-vI-YJn">
                                 <rect key="frame" x="20" y="28" width="560" height="526"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9OX-qn-P0F">
@@ -75,7 +75,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fga-Ai-amX">
                                             <rect key="frame" x="259" y="14" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -95,14 +95,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3Xe-vI-YJn" firstAttribute="top" secondItem="bWG-Cs-g0M" secondAttribute="bottom" constant="8" id="4Ra-iM-BcH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Xe-vI-YJn" secondAttribute="trailing" id="Hce-bW-2i4"/>
-                            <constraint firstItem="qnf-Ru-Dhw" firstAttribute="centerX" secondItem="BDL-CD-S9i" secondAttribute="centerX" id="Hid-7c-UxT"/>
+                            <constraint firstItem="3Xe-vI-YJn" firstAttribute="leading" secondItem="BDL-CD-S9i" secondAttribute="leadingMargin" id="Bos-uV-WuU"/>
                             <constraint firstItem="nqm-wi-Qhz" firstAttribute="top" secondItem="qnf-Ru-Dhw" secondAttribute="bottom" constant="8" id="Hts-pK-AJu"/>
-                            <constraint firstItem="qnf-Ru-Dhw" firstAttribute="top" secondItem="3Xe-vI-YJn" secondAttribute="bottom" constant="8" id="LDZ-us-nyq"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="3Xe-vI-YJn" secondAttribute="leading" id="mbr-ZB-Lr1"/>
+                            <constraint firstItem="qnf-Ru-Dhw" firstAttribute="centerX" secondItem="BDL-CD-S9i" secondAttribute="centerX" id="SSv-is-Vhu"/>
+                            <constraint firstItem="qnf-Ru-Dhw" firstAttribute="top" secondItem="3Xe-vI-YJn" secondAttribute="bottom" constant="8" id="du0-hp-4Zx"/>
+                            <constraint firstItem="3Xe-vI-YJn" firstAttribute="top" secondItem="bWG-Cs-g0M" secondAttribute="bottom" constant="8" id="eDc-Ev-E4O"/>
+                            <constraint firstItem="3Xe-vI-YJn" firstAttribute="centerX" secondItem="BDL-CD-S9i" secondAttribute="centerX" id="eEa-f1-2NF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Xe-vI-YJn" secondAttribute="trailing" id="m5B-Jz-XgG"/>
                             <constraint firstItem="3Xe-vI-YJn" firstAttribute="centerY" secondItem="BDL-CD-S9i" secondAttribute="centerY" id="pzM-Mf-GyS"/>
+                            <constraint firstItem="3Xe-vI-YJn" firstAttribute="centerY" secondItem="BDL-CD-S9i" secondAttribute="centerY" id="wd1-vl-Isl"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="pzM-Mf-GyS"/>
+                                <exclude reference="wd1-vl-Isl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="imageColletionView" destination="3Xe-vI-YJn" id="Wpg-yT-CWJ"/>

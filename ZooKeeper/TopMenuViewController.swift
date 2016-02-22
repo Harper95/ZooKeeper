@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// Main Page
 class TopMenuViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -34,11 +34,11 @@ class TopMenuViewController: UIViewController {
     */
     
     @IBAction func zooListButtonPressed(sender: UIButton) {
+		// When user selects Zoo List the screen switches to ZooTableViewController
         performSegueWithIdentifier("ZooList", sender: self)
     }
-    @IBAction func galleryButtonPressed(sender: UIButton) {
-    }
     @IBAction func imageGalleryTapped(sender: AnyObject) {
+		// presents the ImageGalleryViewController
         let viewController = ImageGalleryViewController.instance()
         presentViewController(viewController, animated: true, completion: nil)
     }

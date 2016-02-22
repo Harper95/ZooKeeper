@@ -24,8 +24,9 @@ public class Animal {
     var color: String
     var isMale: Bool
     var currentWeight: Float?
-    var birthday: NSData?
+    var birthday: NSDate?
     var photo: UIImage?
+	var photoFileName: String?
     
     public init(type: String, name: String, color: String, isMale: Bool) {
         self.type = type
@@ -47,6 +48,33 @@ public class Animal {
     public func image() -> UIImage? {
         return UIImage(named: type.lowercaseString)
     }
+	
+	public func hasImage() -> Bool {
+		return photoFileName != nil
+	}
+	
+	public func saveImage(image: UIImage) -> Bool {
+		if let data = UIImageJPEGRepresentation(image, 0.8) {
+			photoFileName = NSUUID().UUIDString + ".jpg"
+			let path = pathToFileInDocumentsDirectory(photoFileName!)
+			print("writing to \(path)")
+			return data.writeToFile(path, atomically: true)
+		}
+	return false
+	}
+	
+	public func loadImage() -> UIImage? {
+		print("reading from \(photoFileName ?? "no file")")
+		guard let filename = photoFileName,
+			let path = pathToExistingFileInDocumentsDirectory(filename),
+			let image = UIImage(contentsOfFile: path) else { return nil }
+		
+		return image
+	}
+	// Maps Json Objects to Swift Objects
+	public func toDictionary() -> [String: AnyObject] {
+		return ["type": type, "name": name, "color": color, "isMale": isMale, "photoFileName": photoFileName ?? ""]
+	}
 }
 
 public class Duck : Animal, Quackable {

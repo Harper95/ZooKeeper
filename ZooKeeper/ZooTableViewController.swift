@@ -8,28 +8,34 @@
 
 import UIKit
 import SwiftyJSON
-
-let animalKey: Int = 0
-let  staffKey: Int = 1
-
+// The Table view screen
 class ZooTableViewController: UITableViewController {
-    
+	// Declares the index for each Row
+	let animalKey: Int = 0
+	let  staffKey: Int = 1
+	
+	// Why set it to nil?, won't it default to nil
     var detailViewController: DetailViewController? = nil
+	// Sets the zoo variable as a type of the Zoo class
     var zoo: Zoo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
+		
+		// Sets addButton to a button that has a plus button image and calls the insertNewObject function
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+		// Sets the top right button to the addButton
         self.navigationItem.rightBarButtonItem = addButton
+		// if self.splitViewController != nil
         if let split = self.splitViewController {
             let controllers = split.viewControllers
+			// 
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
-        
+		// Sets the row height to 85
         tableView.rowHeight = 85
+		// 
         zoo = ZooData.sharedInstance.zoo
     }
     

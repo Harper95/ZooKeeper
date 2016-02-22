@@ -10,9 +10,21 @@ import Foundation
 import SwiftyJSON
 
 public class ZooFactory {
-    public static func zooFromJsonFileNamed(name: String) -> Zoo? {
-        if let path = NSBundle.mainBundle().pathForResource("zoo", ofType: "json"),
-            let contentData = NSFileManager.defaultManager().contentsAtPath(path) {
+	public static func zooFromJsonFileNamed(name: String) -> Zoo? {
+		// Check to see if we have one in the docs dir
+		var storePath: String!
+		
+		if let path = pathToExistingFileInDocumentsDirectory(name + ".json") {
+			print("loaded from docs dir")
+			storePath = path
+		} else if let path = NSBundle.mainBundle().pathForResource(name, ofType: "json") {
+			print("loaded from bundle")
+			storePath = path
+		} else {
+			return nil
+		}
+		
+		if let contentData = NSFileManager.defaultManager().contentsAtPath(storePath) {
                 
                 let json = JSON(data: contentData)
                 let zoo = Zoo(animals: nil, staff: nil)
@@ -74,4 +86,20 @@ public class ZooFactory {
             return nil
         }
     }
+	
+	public static func saveZoo(zoo: Zoo, toFileNamed name: String) -> Bool {
+		let path = pathToFileInDocumentsDirectory(name + ".json")
+		
+		let json = JSON(zoo.toDictionary())
+		let str = json.description
+		
+		do {
+			try str.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding)
+		}
+		catch (let error) {
+			print(error)
+			return false
+		}
+		return true
+	}
 }

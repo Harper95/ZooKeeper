@@ -38,6 +38,14 @@
                BlueprintName = "ZooKeeperTests"
                ReferencedContainer = "container:ZooKeeper.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "AnimalFactoryTest">
+               </Test>
+               <Test
+                  Identifier = "StaffFactoryTest">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
