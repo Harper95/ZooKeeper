@@ -25,7 +25,7 @@ public class Animal {
     var isMale: Bool
     var currentWeight: Float?
     var birthday: NSDate?
-    var photo: UIImage?
+	// var photo: UIImage?
 	var photoFileName: String?
     
     public init(type: String, name: String, color: String, isMale: Bool) {

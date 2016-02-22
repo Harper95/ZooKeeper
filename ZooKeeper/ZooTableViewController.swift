@@ -30,18 +30,19 @@ class ZooTableViewController: UITableViewController {
 		// if self.splitViewController != nil
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-			// 
+			//
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
 		// Sets the row height to 85
         tableView.rowHeight = 85
-		// 
+		// zoo = zooFromJsonFileNamed(dataNameFile) || an empty zoo
         zoo = ZooData.sharedInstance.zoo
     }
     
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
+		// updates the tableview to show new data
         tableView.reloadData()
     }
     
@@ -51,15 +52,20 @@ class ZooTableViewController: UITableViewController {
     }
     
     func insertNewObject(sender: AnyObject) {
-        //        objects.insert(NSDate(), atIndex: 0)
-        //        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        //        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+		// Creates a new animal with default information
+		zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: animalKey)
+		// Sets the indexpath to the very first cell in animalKey
+		let indexPath = NSIndexPath(forRow: 0, inSection: animalKey)
+		// Creates a new row at indexpath
+		self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
     // MARK: - Segues
-    
+	// Notifies the view controller that a segue is about to be performed
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		// if te user selected an animal
         if segue.identifier == "AnimalDetail" {
+			// indexPath is set to the Row that the user seleceted
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = zoo.animals[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
@@ -70,14 +76,14 @@ class ZooTableViewController: UITableViewController {
         } else if segue.identifier == "StaffDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = zoo.staff[indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
+				let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+				controller.detailItem = object
+				controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+				controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
-    
+	
     // MARK: - Table View
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -32,19 +32,20 @@ class AnimalViewController: DetailViewController {
     
     // MARK: Actions
     @IBAction func controlChanged(sender: AnyObject) {
-		guard let animal = detailItem as? Animal else { return }
-		
-		animal.name = nameTextField.text!
-		animal.color = colorTextField.text!
-		animal.currentWeight = Float(weightTextField.text!)
-		animal.isMale = maleFemaleSwitch.selectedSegmentIndex == 0 ? true : false
-		animal.birthday = birthdayDatePicker.date
-		ZooData.sharedInstance.saveZoo()
+//		guard let animal = detailItem as? Animal else { return }
+//		
+//		animal.name = nameTextField.text!
+//		animal.color = colorTextField.text!
+//		animal.currentWeight = Float(weightTextField.text!)
+//		animal.isMale = maleFemaleSwitch.selectedSegmentIndex == 0 ? true : false
+//		animal.photo = photoImageView.image!
+//		animal.birthday = birthdayDatePicker.date
+//		ZooData.sharedInstance.saveZoo()
     }
     @IBAction func cameraTouched(sender: AnyObject) {
         guard let animal = detailItem as? Animal else {return}
         
-        if animal.photo == nil {
+        if animal.loadImage() == nil {
             CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
         } else {
             CTHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image", okCallback: { () -> Void in
