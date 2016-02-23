@@ -15,6 +15,7 @@ class StaffViewController: DetailViewController {
     @IBOutlet weak var weightTextFieldStaff: UITextField!
     @IBOutlet weak var maleFemaleSwitchStaff: UISegmentedControl!
     @IBOutlet weak var birthdayDatePickerStaff: UIDatePicker!
+	@IBOutlet weak var photoImageViewStaff: UIImageView!
     
     // MARK: -
     override func viewDidLoad() {
@@ -23,39 +24,44 @@ class StaffViewController: DetailViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: Actions
     @IBAction func controlChanged(sender: AnyObject) {
-        
+		guard let staff = detailItem as? Staff else { return }
+		
+		staff.name = nameTextFieldStaff.text!
+		staff.currentWeight = Float(weightTextFieldStaff.text!)
+		staff.isMale = maleFemaleSwitchStaff.selectedSegmentIndex == 0 ? true : false
+		staff.birthday = birthdayDatePickerStaff.date
+		ZooData.sharedInstance.saveZoo()
     }
     @IBAction func cameraTouched(sender: AnyObject) {
-        CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
+		guard let staff = detailItem as? Staff else { return }
+		
+		if staff.loadImage() == nil {
+			CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
+		} else {
+			CTHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image", okCallback: { () -> Void in
+				CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
+				}) {
+					print("User Cancelled")
+			}
+		}
     }
     
     // MARK: -
     override func configureView() {
-        if let staff = self.detailItem as? Staff{
-            nameTextFieldStaff?.text = staff.name
-            maleFemaleSwitchStaff?.selectedSegmentIndex = staff.isMale ? 0 : 1
-            
-        }
+		guard let staff = self.detailItem as? Staff where nameTextFieldStaff != nil else { return }
+		
+		nameTextFieldStaff?.text = staff.name
+		if let weight = staff.currentWeight {
+			weightTextFieldStaff?.text = NSString(format: "%0.2", weight) as String
+		} else {
+			weightTextFieldStaff?.text = "unknown"
+		}
+		maleFemaleSwitchStaff?.selectedSegmentIndex = staff.isMale ? 0 : 1
+		photoImageViewStaff?.image = staff.loadImage() ?? UIImage(named: "camera")
+		ZooData.sharedInstance.saveZoo()
     }
-    
 }
 
 extension StaffViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -63,10 +69,10 @@ extension StaffViewController: UINavigationControllerDelegate, UIImagePickerCont
         
         picker.dismissViewControllerAnimated(true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            print(image)
             if let staff = self.detailItem as? Staff {
-                staff.photo = image
-            }
+				photoImageViewStaff.image = image
+				staff.saveImage(image)
+			}
         }
     }
     

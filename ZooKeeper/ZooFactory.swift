@@ -54,15 +54,23 @@ public class ZooFactory {
         let name: String = json["name"].stringValue
         let type: String = json["type"].stringValue
         let isMale: Bool = json["isMale"].boolValue
+		var staff: Staff?
         
         switch type {
         case "ZooKeeper":
-            return ZooKeeper(name: name, isMale: isMale)
+            staff = ZooKeeper(name: name, isMale: isMale)
         case "TicketTaker":
-            return TicketTaker(name: name, isMale: isMale)
+            staff = TicketTaker(name: name, isMale: isMale)
         default:
             return nil
         }
+		
+		let photoPath: String = json["photoFileName"].stringValue
+		if !photoPath.isEmpty {
+			staff?.photoFileName = photoPath
+		}
+		
+		return staff
     }
     
     public static func animalFromJSON(json: JSON) -> Animal? {

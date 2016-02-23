@@ -8,6 +8,7 @@
 
 import UIKit
 
+// The blank opening View Controller
 class DetailViewController: UIViewController {
 
     var detailItem: AnyObject? {

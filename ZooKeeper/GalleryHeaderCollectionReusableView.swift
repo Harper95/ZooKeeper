@@ -10,5 +10,4 @@ import UIKit
 
 class GalleryHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var nameLabel: UILabel!
-        
 }

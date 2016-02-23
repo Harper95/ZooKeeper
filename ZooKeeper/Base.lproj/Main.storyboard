@@ -452,13 +452,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwo-H2-KG6">
-                                <rect key="frame" x="530" y="164" width="50" height="50"/>
-                                <state key="normal" image="camera"/>
-                                <connections>
-                                    <action selector="cameraTouched:" destination="RnD-nV-6B8" eventType="touchUpInside" id="a33-f5-rXc"/>
-                                </connections>
-                            </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vZc-di-g8E">
                                 <rect key="frame" x="20" y="222" width="560" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="476944105.36975098">
@@ -468,25 +461,37 @@
                                     <action selector="controlChanged:" destination="RnD-nV-6B8" eventType="valueChanged" id="YUH-1k-leC"/>
                                 </connections>
                             </datePicker>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="Lio-Bt-9Cr">
+                                <rect key="frame" x="203" y="110" width="377" height="104"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="104" id="zJa-VY-1f9"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bmQ-6I-zE6" appends="YES" id="ZHs-X4-n5O"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vZc-di-g8E" firstAttribute="top" secondItem="Lio-Bt-9Cr" secondAttribute="bottom" constant="8" id="4Y0-uu-Nrz"/>
                             <constraint firstItem="LYs-BD-7VK" firstAttribute="top" secondItem="fS0-nU-Ybw" secondAttribute="bottom" constant="8" id="5eY-rr-Y6j"/>
+                            <constraint firstItem="Lio-Bt-9Cr" firstAttribute="leading" secondItem="fS0-nU-Ybw" secondAttribute="trailing" constant="8" id="6Gr-h9-65c"/>
                             <constraint firstItem="vZc-di-g8E" firstAttribute="trailing" secondItem="uc7-xe-4b3" secondAttribute="trailingMargin" id="DNK-ey-eSn"/>
                             <constraint firstItem="vZc-di-g8E" firstAttribute="top" secondItem="Z3d-rC-ieM" secondAttribute="bottom" constant="8" id="ElP-gY-evt"/>
                             <constraint firstItem="Z3d-rC-ieM" firstAttribute="leading" secondItem="uc7-xe-4b3" secondAttribute="leadingMargin" id="FC5-qn-iFR"/>
                             <constraint firstItem="vZc-di-g8E" firstAttribute="leading" secondItem="uc7-xe-4b3" secondAttribute="leadingMargin" id="IPX-Ir-SQa"/>
                             <constraint firstItem="LYs-BD-7VK" firstAttribute="leading" secondItem="uc7-xe-4b3" secondAttribute="leadingMargin" id="Nsx-hb-ydO"/>
+                            <constraint firstItem="Lio-Bt-9Cr" firstAttribute="top" secondItem="dI3-cc-vcf" secondAttribute="bottom" constant="8" id="PsO-CW-M3b"/>
                             <constraint firstItem="dI3-cc-vcf" firstAttribute="trailing" secondItem="uc7-xe-4b3" secondAttribute="trailingMargin" id="Stm-sW-49O"/>
                             <constraint firstItem="dI3-cc-vcf" firstAttribute="top" secondItem="RK9-BK-6En" secondAttribute="bottom" constant="8" id="aTE-mi-7nY"/>
-                            <constraint firstItem="iwo-H2-KG6" firstAttribute="bottom" secondItem="Z3d-rC-ieM" secondAttribute="bottom" id="aal-sk-823"/>
                             <constraint firstItem="dI3-cc-vcf" firstAttribute="centerX" secondItem="uc7-xe-4b3" secondAttribute="centerX" id="bkO-aK-18f"/>
                             <constraint firstItem="dI3-cc-vcf" firstAttribute="leading" secondItem="uc7-xe-4b3" secondAttribute="leadingMargin" id="htE-AX-Uqi"/>
                             <constraint firstItem="vZc-di-g8E" firstAttribute="centerX" secondItem="uc7-xe-4b3" secondAttribute="centerX" id="mXp-O7-RaW"/>
                             <constraint firstItem="fS0-nU-Ybw" firstAttribute="top" secondItem="dI3-cc-vcf" secondAttribute="bottom" constant="8" id="pyE-7l-Cut"/>
                             <constraint firstItem="fS0-nU-Ybw" firstAttribute="leading" secondItem="uc7-xe-4b3" secondAttribute="leadingMargin" id="qyN-dg-zXP"/>
                             <constraint firstItem="Z3d-rC-ieM" firstAttribute="top" secondItem="LYs-BD-7VK" secondAttribute="bottom" constant="8" id="rFI-b0-Qpn"/>
-                            <constraint firstItem="iwo-H2-KG6" firstAttribute="trailing" secondItem="uc7-xe-4b3" secondAttribute="trailingMargin" id="vVZ-dW-Hgs"/>
+                            <constraint firstItem="Lio-Bt-9Cr" firstAttribute="trailing" secondItem="dI3-cc-vcf" secondAttribute="trailing" id="raP-7R-E9Y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zoz-SV-9Mw"/>
@@ -494,10 +499,16 @@
                         <outlet property="birthdayDatePickerStaff" destination="vZc-di-g8E" id="8GH-Eq-As9"/>
                         <outlet property="maleFemaleSwitchStaff" destination="LYs-BD-7VK" id="oy5-Pf-mVQ"/>
                         <outlet property="nameTextFieldStaff" destination="dI3-cc-vcf" id="4Ih-3o-yjA"/>
+                        <outlet property="photoImageViewStaff" destination="Lio-Bt-9Cr" id="dju-Gf-xYU"/>
                         <outlet property="weightTextFieldStaff" destination="fS0-nU-Ybw" id="7T2-YJ-yIM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heL-3I-C2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bmQ-6I-zE6">
+                    <connections>
+                        <action selector="cameraTouched:" destination="RnD-nV-6B8" id="5Ka-o2-TKx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2182" y="27"/>
         </scene>

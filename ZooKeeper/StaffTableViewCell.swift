@@ -33,8 +33,8 @@ class StaffTableViewCell: UITableViewCell {
             topLabelStaff.text = staff.name
             bottomLabelStaff.text = staff.report()
             
-            if let _ = staff.photo {
-                iconImageViewStaff.image = staff.photo
+            if let _ = staff.loadImage() {
+                iconImageViewStaff.image = staff.loadImage()
             } else {
                 iconImageViewStaff.image = staff.image()
             }

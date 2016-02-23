@@ -102,7 +102,7 @@ class ZooTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == animalKey {
             let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
             let animal: Animal = zoo.animals[indexPath.row]
             
@@ -139,7 +139,7 @@ class ZooTableViewController: UITableViewController {
                 zoo.animals.removeAtIndex(indexPath.row)
             }
             if indexPath.section == staffKey{
-                zoo.animals.removeAtIndex(indexPath.row)
+                zoo.staff.removeAtIndex(indexPath.row)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {

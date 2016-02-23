@@ -25,11 +25,6 @@ class AnimalViewController: DetailViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: Actions
     @IBAction func controlChanged(sender: AnyObject) {
 		guard let animal = detailItem as? Animal else { return }
@@ -49,7 +44,7 @@ class AnimalViewController: DetailViewController {
         } else {
             CTHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image", okCallback: { () -> Void in
                 CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
-                }) { () -> Void in                      // Trailing Closure
+                }) {									// Trailing Closure
                     print("User Cancelled")
             }
         }
@@ -57,7 +52,7 @@ class AnimalViewController: DetailViewController {
     
     // MARK: -
     override func configureView() {
-        guard let animal = self.detailItem as? Animal where nameTextField != nil else {return}
+        guard let animal = self.detailItem as? Animal where nameTextField != nil else { return }
         
         nameTextField?.text = animal.name
         colorTextField?.text = animal.color
