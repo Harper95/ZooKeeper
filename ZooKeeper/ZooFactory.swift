@@ -15,6 +15,7 @@ public class ZooFactory {
 		var storePath: String!
 		
 		if let path = pathToExistingFileInDocumentsDirectory(name + ".json") {
+			print(path)
 			print("loaded from docs dir")
 			storePath = path
 		} else if let path = NSBundle.mainBundle().pathForResource(name, ofType: "json") {
@@ -70,31 +71,40 @@ public class ZooFactory {
         let color: String = json["color"].stringValue
         let type: String = json["type"].stringValue
         let isMale: Bool = json["isMale"].boolValue
-        
-        switch type {
+		var animal: Animal?
+		
+		switch type {
         case "Duck":
-            return Duck(name: name, color: color, isMale: isMale)
+			animal = Duck(name: name, color: color, isMale: isMale)
         case "Fish":
-            return Fish(name: name, color: color, isMale: isMale)
+            animal = Fish(name: name, color: color, isMale: isMale)
         case "Bear":
-            return Bear(name: name, color: color, isMale: isMale)
+            animal = Bear(name: name, color: color, isMale: isMale)
         case "Lion":
-            return Lion(name: name, color: color, isMale: isMale)
+            animal = Lion(name: name, color: color, isMale: isMale)
         case "Seal":
-            return Seal(name: name, color: color, isMale: isMale)
+            animal = Seal(name: name, color: color, isMale: isMale)
         default:
             return nil
         }
+		
+		let photoPath: String = json["photoFileName"].stringValue
+		if !photoPath.isEmpty {
+			animal?.photoFileName = photoPath
+		}
+		
+		return animal
     }
 	
 	public static func saveZoo(zoo: Zoo, toFileNamed name: String) -> Bool {
 		let path = pathToFileInDocumentsDirectory(name + ".json")
-		
+		print(path)
 		let json = JSON(zoo.toDictionary())
 		let str = json.description
 		
 		do {
 			try str.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding)
+			print(str)
 		}
 		catch (let error) {
 			print(error)

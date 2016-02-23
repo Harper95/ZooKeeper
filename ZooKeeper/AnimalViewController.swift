@@ -17,7 +17,7 @@ class AnimalViewController: DetailViewController {
     @IBOutlet weak var maleFemaleSwitch: UISegmentedControl!
     @IBOutlet weak var birthdayDatePicker: UIDatePicker!
     @IBOutlet weak var photoImageView: UIImageView!
-    
+	
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +32,14 @@ class AnimalViewController: DetailViewController {
     
     // MARK: Actions
     @IBAction func controlChanged(sender: AnyObject) {
-//		guard let animal = detailItem as? Animal else { return }
-//		
-//		animal.name = nameTextField.text!
-//		animal.color = colorTextField.text!
-//		animal.currentWeight = Float(weightTextField.text!)
-//		animal.isMale = maleFemaleSwitch.selectedSegmentIndex == 0 ? true : false
-//		animal.photo = photoImageView.image!
-//		animal.birthday = birthdayDatePicker.date
-//		ZooData.sharedInstance.saveZoo()
+		guard let animal = detailItem as? Animal else { return }
+		
+		animal.name = nameTextField.text!
+		animal.color = colorTextField.text!
+		animal.currentWeight = Float(weightTextField.text!)
+		animal.isMale = maleFemaleSwitch.selectedSegmentIndex == 0 ? true : false
+		animal.birthday = birthdayDatePicker.date
+		ZooData.sharedInstance.saveZoo()
     }
     @IBAction func cameraTouched(sender: AnyObject) {
         guard let animal = detailItem as? Animal else {return}
@@ -69,6 +68,7 @@ class AnimalViewController: DetailViewController {
         }
         maleFemaleSwitch?.selectedSegmentIndex = animal.isMale ? 0 : 1
         photoImageView?.image = animal.loadImage() ?? UIImage(named: "camera")
+		ZooData.sharedInstance.saveZoo()
     }
 }
 
@@ -80,7 +80,6 @@ extension AnimalViewController: UINavigationControllerDelegate, UIImagePickerCon
             if let animal = self.detailItem as? Animal {
                 photoImageView.image = image
 				animal.saveImage(image)
-				ZooData.sharedInstance.saveZoo()
             }
         }
     }

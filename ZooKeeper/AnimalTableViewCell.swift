@@ -20,7 +20,7 @@ class AnimalTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         configureView()
-    }
+	}
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
