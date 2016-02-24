@@ -51,7 +51,7 @@ class StaffViewController: DetailViewController {
     // MARK: -
     override func configureView() {
 		guard let staff = self.detailItem as? Staff where nameTextFieldStaff != nil else { return }
-		
+
 		nameTextFieldStaff?.text = staff.name
 		if let weight = staff.currentWeight {
 			weightTextFieldStaff?.text = NSString(format: "%0.2", weight) as String
