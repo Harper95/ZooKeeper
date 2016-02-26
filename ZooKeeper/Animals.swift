@@ -56,14 +56,12 @@ public class Animal {
 		if let data = UIImageJPEGRepresentation(image, 0.8) {
 			photoFileName = NSUUID().UUIDString + ".jpg"
 			let path = pathToFileInDocumentsDirectory(photoFileName!)
-			print("writing to \(path)")
 			return data.writeToFile(path, atomically: true)
 		}
 	return false
 	}
 	
 	public func loadImage() -> UIImage? {
-		print("reading from \(photoFileName ?? "no file")")
 		guard let filename = photoFileName,
 			let path = pathToExistingFileInDocumentsDirectory(filename),
 			let image = UIImage(contentsOfFile: path) else { return nil }

@@ -241,7 +241,7 @@
                                     <outlet property="bottomLabelStaff" destination="9nY-Tq-foz" id="aJ5-5R-Wxx"/>
                                     <outlet property="iconImageViewStaff" destination="rzE-rZ-kpO" id="7De-B6-grE"/>
                                     <outlet property="topLabelStaff" destination="kGV-16-W82" id="gE4-g7-ZTr"/>
-                                    <segue destination="Zpx-Al-Y0i" kind="showDetail" id="cdN-s0-np3"/>
+                                    <segue destination="Zpx-Al-Y0i" kind="showDetail" identifier="StaffDetail" id="cdN-s0-np3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

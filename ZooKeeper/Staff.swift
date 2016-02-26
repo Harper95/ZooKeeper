@@ -51,7 +51,6 @@ public class Staff {
 	}
 	
 	public func loadImage() -> UIImage? {
-		print("reading from \(photoFileName ?? "no file")")
 		guard let filename = photoFileName,
 			let path = pathToExistingFileInDocumentsDirectory(filename),
 			let image = UIImage(contentsOfFile: path) else { return nil }

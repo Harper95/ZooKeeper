@@ -56,7 +56,7 @@ class StaffViewController: DetailViewController {
 		if let weight = staff.currentWeight {
 			weightTextFieldStaff?.text = NSString(format: "%0.2", weight) as String
 		} else {
-			weightTextFieldStaff?.text = "unknown"
+			weightTextFieldStaff?.text = ""
 		}
 		maleFemaleSwitchStaff?.selectedSegmentIndex = staff.isMale ? 0 : 1
 		photoImageViewStaff?.image = staff.loadImage() ?? UIImage(named: "camera")

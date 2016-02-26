@@ -15,11 +15,8 @@ public class ZooFactory {
 		var storePath: String!
 		
 		if let path = pathToExistingFileInDocumentsDirectory(name + ".json") {
-			print(path)
-			print("loaded from docs dir")
 			storePath = path
 		} else if let path = NSBundle.mainBundle().pathForResource(name, ofType: "json") {
-			print("loaded from bundle")
 			storePath = path
 		} else {
 			return nil
@@ -106,13 +103,11 @@ public class ZooFactory {
 	
 	public static func saveZoo(zoo: Zoo, toFileNamed name: String) -> Bool {
 		let path = pathToFileInDocumentsDirectory(name + ".json")
-		print(path)
 		let json = JSON(zoo.toDictionary())
 		let str = json.description
 		
 		do {
 			try str.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding)
-			print(str)
 		}
 		catch (let error) {
 			print(error)

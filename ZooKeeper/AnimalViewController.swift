@@ -53,13 +53,13 @@ class AnimalViewController: DetailViewController {
     // MARK: -
     override func configureView() {
         guard let animal = self.detailItem as? Animal where nameTextField != nil else { return }
-        
+        print(self.detailItem)
         nameTextField?.text = animal.name
         colorTextField?.text = animal.color
         if let weight = animal.currentWeight {
             weightTextField?.text = NSString(format: "%0.2", weight) as String
         } else {
-            weightTextField?.text = "unknown"
+            weightTextField?.text = ""
         }
         maleFemaleSwitch?.selectedSegmentIndex = animal.isMale ? 0 : 1
         photoImageView?.image = animal.loadImage() ?? UIImage(named: "camera")

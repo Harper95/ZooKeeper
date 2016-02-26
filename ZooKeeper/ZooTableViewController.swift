@@ -8,11 +8,13 @@
 
 import UIKit
 import SwiftyJSON
+
+// Declares the index for each Row
+let animalKey: Int = 0
+let  staffKey: Int = 1
+
 // The Table view screen
 class ZooTableViewController: UITableViewController {
-	// Declares the index for each Row
-	let animalKey: Int = 0
-	let  staffKey: Int = 1
 	
 	// Why set it to nil?, won't it default to nil
     var detailViewController: DetailViewController? = nil
@@ -52,14 +54,39 @@ class ZooTableViewController: UITableViewController {
     }
     
     func insertNewObject(sender: AnyObject) {
-		// Creates a new animal with default information
-		zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: animalKey)
-		// Sets the indexpath to the very first cell in animalKey
-		let indexPath = NSIndexPath(forRow: 0, inSection: animalKey)
-		// Creates a new row at indexpath
-		self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
-    
+		let alertController = UIAlertController(
+			title: nil,
+			message: "Would you like to create an new animal or staff member?",
+			preferredStyle: .Alert
+		)
+		
+		let animalAction = UIAlertAction(
+			title: "Animal", style: .Default) { (action) in
+				let indexPath = NSIndexPath(forRow: 0, inSection: animalKey)
+				self.zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: animalKey)
+				self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+		}
+		
+		let staffAction = UIAlertAction(
+			title: "Staff", style: .Default) { (action) in
+				let indexPath = NSIndexPath(forRow: 0, inSection: staffKey)
+				self.zoo.staff.insert(Staff(type: "Occupation", name: "Name", isMale: true), atIndex: staffKey)
+				self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+		}
+		
+		let cancelAction = UIAlertAction(
+			title: "Cancel", style: .Default) { (action) in
+			
+		}
+	
+		alertController.addAction(animalAction)
+		alertController.addAction(staffAction)
+		alertController.addAction(cancelAction)
+		
+		presentViewController(alertController, animated: true, completion: nil)
+	}
+	
+	
     // MARK: - Segues
 	// Notifies the view controller that a segue is about to be performed
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -138,7 +165,7 @@ class ZooTableViewController: UITableViewController {
             if indexPath.section == animalKey {
                 zoo.animals.removeAtIndex(indexPath.row)
             }
-            if indexPath.section == staffKey{
+            if indexPath.section == staffKey {
                 zoo.staff.removeAtIndex(indexPath.row)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)

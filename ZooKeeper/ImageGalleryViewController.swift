@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+class ImageGalleryViewController: DetailViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+	
+	var zoo: Zoo!
+	
     @IBOutlet weak var imageColletionView: UICollectionView!
     
     private static let storyboard = UIStoryboard(name: "Modals", bundle: nil)
@@ -19,17 +21,27 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+		switch section {
+		case animalKey:
+			return zoo.animals.count
+		case staffKey:
+			return zoo.staff.count
+		default:
+			return 0
+		}
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == animalKey {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
-            cell.animalLabel.text = "name"
-            return cell
+			if let animal = self.detailItem as? Animal {
+				cell.animalLabel.text = animal.name
+			// cell.animalImage.image
+			}
+			return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StaffCell", forIndexPath: indexPath)
-            return cell
+			return cell
         }
     }
     override func viewDidLoad() {
@@ -37,6 +49,8 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 
         // Do any additional setup after loading the view.
         imageColletionView.registerNib(UINib(nibName: "StaffCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "StaffCell")
+		
+		zoo = ZooData.sharedInstance.zoo
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,20 +64,21 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "GalleryHeader", forIndexPath: indexPath) as! GalleryHeaderCollectionReusableView
-        header.nameLabel.text = indexPath.section == 0 ? "Animals" : "Staff"
+        header.nameLabel.text = indexPath.section == animalKey ? "Animals" : "Staff"
         return header
     }
-
-    /*
+	
+	/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		
     }
-    */
-    
+	*/
+	
     @IBAction func dismissTouched(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
