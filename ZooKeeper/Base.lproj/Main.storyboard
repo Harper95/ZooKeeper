@@ -22,6 +22,14 @@
             </objects>
             <point key="canvasLocation" x="-834" y="-330"/>
         </scene>
+        <!--ImageGalleryNavigation-->
+        <scene sceneID="0e4-N0-08U">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Modals" referencedIdentifier="ImageGalleryNavigation" id="78h-Vg-sFG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q7f-oV-Nxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437.5" y="-757"/>
+        </scene>
         <!--Top Menu View Controller-->
         <scene sceneID="C7z-0o-Nod">
             <objects>
@@ -60,6 +68,7 @@
                     <navigationItem key="navigationItem" id="wyd-6w-lfX"/>
                     <connections>
                         <segue destination="7bK-jq-Zjz" kind="show" identifier="ZooList" id="K8q-44-K1Y"/>
+                        <segue destination="78h-Vg-sFG" kind="show" identifier="ImageGallery" id="gon-uy-pXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUw-tB-jQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,7 +269,7 @@
         <!--Navigation Controller-->
         <scene sceneID="4y4-S1-xD4">
             <objects>
-                <navigationController id="Ds4-fL-uPh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AnimalNavigation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ds4-fL-uPh" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LZf-YK-etB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -276,7 +285,7 @@
         <!--Navigation Controller-->
         <scene sceneID="qWM-4z-xYI">
             <objects>
-                <navigationController id="Zpx-Al-Y0i" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StaffNavigation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zpx-Al-Y0i" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="mCQ-3G-F5k"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ihs-yD-Xfg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -293,7 +302,7 @@
         <!--Animal View Controller-->
         <scene sceneID="IQn-B4-t0p">
             <objects>
-                <viewController id="lan-KY-abi" customClass="AnimalViewController" customModule="ZooKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnimalViewController" id="lan-KY-abi" customClass="AnimalViewController" customModule="ZooKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NAK-vY-0ZJ"/>
                         <viewControllerLayoutGuide type="bottom" id="NyG-Xg-teM"/>

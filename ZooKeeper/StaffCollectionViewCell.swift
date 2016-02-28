@@ -10,9 +10,7 @@ import UIKit
 
 class StaffCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+	@IBOutlet weak var staffImage: UIImageView!
+	@IBOutlet weak var staffLabel: UILabel!
 
 }

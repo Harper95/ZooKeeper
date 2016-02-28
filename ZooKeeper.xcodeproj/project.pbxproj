@@ -27,7 +27,6 @@
 		34AC1E471C6D90BA009B26FF /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E461C6D90BA009B26FF /* StaffViewController.swift */; };
 		34AC1E491C6D90D3009B26FF /* StaffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */; };
 		34E289D01C76B2DF006BA53D /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E289CE1C76B2DF006BA53D /* StaffCollectionViewCell.swift */; };
-		34E289D11C76B2DF006BA53D /* StaffCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34E289CF1C76B2DF006BA53D /* StaffCollectionViewCell.xib */; };
 		34E289D31C76B752006BA53D /* GalleryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E289D21C76B752006BA53D /* GalleryHeaderCollectionReusableView.swift */; };
 		34E289D51C76BC61006BA53D /* Zoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E289D41C76BC61006BA53D /* Zoo.swift */; };
 		34E289D81C76BD1A006BA53D /* ZooFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E289D71C76BD1A006BA53D /* ZooFactory.swift */; };
@@ -84,7 +83,6 @@
 		34AC1E461C6D90BA009B26FF /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewCell.swift; sourceTree = "<group>"; };
 		34E289CE1C76B2DF006BA53D /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
-		34E289CF1C76B2DF006BA53D /* StaffCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCollectionViewCell.xib; sourceTree = "<group>"; };
 		34E289D21C76B752006BA53D /* GalleryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		34E289D41C76BC61006BA53D /* Zoo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Zoo.swift; path = ../Zoo.swift; sourceTree = "<group>"; };
 		34E289D71C76BD1A006BA53D /* ZooFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooFactory.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				34AC1E3E1C6D8AB6009B26FF /* Staff.swift */,
 				34AC1E461C6D90BA009B26FF /* StaffViewController.swift */,
 				34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */,
-				34E289CF1C76B2DF006BA53D /* StaffCollectionViewCell.xib */,
 				34E289CE1C76B2DF006BA53D /* StaffCollectionViewCell.swift */,
 			);
 			name = Staff;
@@ -339,7 +336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F6131D1C757C56002320C2 /* Modals.storyboard in Resources */,
-				34E289D11C76B2DF006BA53D /* StaffCollectionViewCell.xib in Resources */,
 				34A963781C64592200CCCA56 /* zoo.json in Resources */,
 				34A9634A1C64501400CCCA56 /* LaunchScreen.storyboard in Resources */,
 				34A963471C64501400CCCA56 /* Assets.xcassets in Resources */,

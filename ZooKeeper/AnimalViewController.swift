@@ -53,7 +53,7 @@ class AnimalViewController: DetailViewController {
     // MARK: -
     override func configureView() {
         guard let animal = self.detailItem as? Animal where nameTextField != nil else { return }
-        print(self.detailItem)
+		
         nameTextField?.text = animal.name
         colorTextField?.text = animal.color
         if let weight = animal.currentWeight {
