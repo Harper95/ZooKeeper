@@ -214,12 +214,12 @@ func getDocumentsDirectory() -> NSString {
 	return documentsDirectory
 }
 
-func pathToFileInDocumentsDirectory(filename: String) -> String {
+public func CTHPathToFileInDocumentsDirectory(filename: String) -> String {
 	return getDocumentsDirectory().stringByAppendingPathComponent(filename)
 }
 
-func pathToExistingFileInDocumentsDirectory(filename: String) -> String? {
-	let path = pathToFileInDocumentsDirectory(filename)
+public func CTHPathToExistingFileInDocumentsDirectory(filename: String) -> String? {
+	let path = CTHPathToFileInDocumentsDirectory(filename)
 	let checkValidation = NSFileManager.defaultManager()
 	if (checkValidation.fileExistsAtPath(path)) {
 		return path

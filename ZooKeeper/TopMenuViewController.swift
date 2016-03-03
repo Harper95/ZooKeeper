@@ -23,8 +23,6 @@ class TopMenuViewController: UIViewController {
     }
     @IBAction func imageGalleryTapped(sender: AnyObject) {
 		// presents the ImageGalleryViewController
-//		let viewController = ImageGalleryViewController.instance()
-//       presentViewController(viewController, animated: true, completion: nil)
 		performSegueWithIdentifier("ImageGallery", sender: self)
     }
 }

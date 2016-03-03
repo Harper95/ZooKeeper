@@ -14,12 +14,6 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 	
 	var detailViewController: DetailViewController? = nil
 	var zoo: Zoo!
-    
-//	private static let storyboard = UIStoryboard(name: "Modals", bundle: nil)
-	
-//	static func instance() -> ImageGalleryViewController {
-//	    return storyboard.instantiateViewControllerWithIdentifier("ImageGalleryViewController") as! ImageGalleryViewController
-//	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +43,13 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 		
 		let animalAction = UIAlertAction(title: "Animal", style: .Default) { (action) in
 			let indexPath = NSIndexPath(forRow: 0, inSection: animalKey)
-			self.zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: animalKey)
+			self.zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: 0)
 			self.imageColletionView.insertItemsAtIndexPaths([indexPath])
 		}
 		
 		let staffAction = UIAlertAction(title: "Staff", style: .Default) { (action) in
 			let indexPath = NSIndexPath(forRow: 0, inSection: staffKey)
-			self.zoo.staff.insert(Staff(type: "Occupation", name: "Name", isMale: true), atIndex: staffKey)
+			self.zoo.staff.insert(Staff(type: "Occupation", name: "Name", isMale: true), atIndex: 0)
 			self.imageColletionView.insertItemsAtIndexPaths([indexPath])
 		}
 		
@@ -67,16 +61,6 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 		
 		presentViewController(alertController, animated: true, completion: nil)
 	}
-	
-	// MARK: - Segues
-	
-//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//		if segue.identifier == "AnimalCollectionDetail" {
-//			if let indexPath = self.imageColletionView.indexPathsForSelectedItems() {
-//				
-//			}
-//		}
-//	}
 	
 	// MARK: - Collection View
     
@@ -98,7 +82,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		if indexPath.section == animalKey {
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
-			let animal: Animal = zoo.animals[indexPath.section]
+			let animal: Animal = zoo.animals[indexPath.row]
 			
 			cell.animalLabel.text = animal.name
 			cell.animalImage.image = animal.loadImage() ?? UIImage(named: "camera")
@@ -106,7 +90,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 			return cell
 		} else {
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StaffCell", forIndexPath: indexPath) as! StaffCollectionViewCell
-			let staff: Staff = zoo.staff[indexPath.section]
+			let staff: Staff = zoo.staff[indexPath.row]
 			
 			cell.staffLabel.text = staff.name
 			
@@ -119,6 +103,26 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 		header.nameLabel.text = indexPath.section == animalKey ? "Animals" : "Staff"
 		return header
 	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "AnimalDetail" {
+			if let indexPath = self.imageColletionView.indexPathsForSelectedItems()!.first {
+				let object = zoo.animals[indexPath.row]
+				let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+				controller.detailItem = object
+				controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+				controller.navigationItem.leftItemsSupplementBackButton = true
+			}
+		} else if segue.identifier == "StaffDetail" {
+			if let indexPath = self.imageColletionView.indexPathsForSelectedItems()!.first {
+				let object = zoo.staff[indexPath.row]
+				let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+				controller.detailItem = object
+				controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+				controller.navigationItem.leftItemsSupplementBackButton = true
+			}
+		}
+		}
 	
     @IBAction func dismissTouched(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)

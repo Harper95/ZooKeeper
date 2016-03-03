@@ -27,16 +27,21 @@ class ZooTableViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+		
         tableView.rowHeight = 85
         zoo = ZooData.sharedInstance.zoo
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataUpdated:", name: ZooDataNotifications.Updated.rawValue, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-        
+	}
+	
+	func dataUpdated(notification: NSNotification) {
+		tableView.reloadData()
+	}
+	
     func insertNewObject(sender: AnyObject) {
 		let alertController = UIAlertController(
 			title: nil,
@@ -47,14 +52,14 @@ class ZooTableViewController: UITableViewController {
 		let animalAction = UIAlertAction(
 			title: "Animal", style: .Default) { (action) in
 				let indexPath = NSIndexPath(forRow: 0, inSection: animalKey)
-				self.zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: animalKey)
+				self.zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: 0)
 				self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
 		}
 		
 		let staffAction = UIAlertAction(
 			title: "Staff", style: .Default) { (action) in
 				let indexPath = NSIndexPath(forRow: 0, inSection: staffKey)
-				self.zoo.staff.insert(Staff(type: "Occupation", name: "Name", isMale: true), atIndex: staffKey)
+				self.zoo.staff.insert(Staff(type: "Occupation", name: "Name", isMale: true), atIndex: 0)
 				self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
 		}
 		
@@ -139,9 +144,8 @@ class ZooTableViewController: UITableViewController {
                 zoo.staff.removeAtIndex(indexPath.row)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-
-		}
+		} 
+		ZooData.sharedInstance.saveZoo()
     }
 }
 

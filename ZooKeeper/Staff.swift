@@ -26,7 +26,7 @@ public class Staff {
         print("Oh No!")
     }
     /**
-     - Returns: A string descibing the animal
+     - Returns: A string descibing the staff member
      */
     public func report() -> String {
         return "I'm a \(isMale ? "male" : "female") and my name is \(name) "
@@ -43,7 +43,7 @@ public class Staff {
 	public func saveImage(image: UIImage) -> Bool {
 		if let data = UIImageJPEGRepresentation(image, 0.8) {
 			photoFileName = NSUUID().UUIDString + ".jpg"
-			let path = pathToFileInDocumentsDirectory(photoFileName!)
+			let path = CTHPathToFileInDocumentsDirectory(photoFileName!)
 			print("writing to \(path)")
 			return data.writeToFile(path, atomically: true)
 		}
@@ -52,15 +52,37 @@ public class Staff {
 	
 	public func loadImage() -> UIImage? {
 		guard let filename = photoFileName,
-			let path = pathToExistingFileInDocumentsDirectory(filename),
+			let path = CTHPathToExistingFileInDocumentsDirectory(filename),
 			let image = UIImage(contentsOfFile: path) else { return nil }
 		
 		return image
 	}
 	
+	private func birthdayString() -> String? {
+		guard let day = birthday else {return nil}
+		
+		let formatter = NSDateFormatter()
+		formatter.dateFormat = dateFormatString
+		return formatter.stringFromDate(day)
+	}
+	
+	public static func dateFromString(string: String?) -> NSDate? {
+		guard let string = string else {return nil}
+		
+		let formatter = NSDateFormatter()
+		formatter.dateFormat = dateFormatString
+		return formatter.dateFromString(string)
+	}
+	
 	// Maps Json Objects to Swift Objects
 	public func toDictionary() -> [String: AnyObject] {
-		return ["type": type, "name": name, "isMale": isMale, "photoFileName": photoFileName ?? ""]
+		return ["type": type,
+				"name": name,
+				"isMale": isMale,
+				"currentWeight": currentWeight ?? -1,
+				"birthday" : birthdayString() ?? "",
+				"photoFileName": photoFileName ?? ""
+		]
 	}
 
 }

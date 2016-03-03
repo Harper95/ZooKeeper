@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum ZooDataNotifications: String {
+	case Updated = "com.ctharper.zoodata.Updated"
+}
+
 public class ZooData {
 	// Creation of a singleton
     public static let sharedInstance = ZooData()
@@ -25,6 +29,10 @@ public class ZooData {
     }
 	
 	public func saveZoo() -> Bool {
-		return ZooFactory.saveZoo(zoo, toFileNamed: dataFileName)
+		let result = ZooFactory.saveZoo(zoo, toFileNamed: dataFileName)
+		if result {
+			NSNotificationCenter.defaultCenter().postNotificationName(ZooDataNotifications.Updated.rawValue, object: nil)
+		}
+		return result
 	}
 }

@@ -65,7 +65,7 @@
                                         <connections>
                                             <outlet property="animalImage" destination="gKq-FS-X4N" id="FHB-hs-8nB"/>
                                             <outlet property="animalLabel" destination="Ko9-9f-8WL" id="EWX-C0-ACL"/>
-                                            <segue destination="S79-tt-gde" kind="showDetail" id="xA5-7e-luR"/>
+                                            <segue destination="S79-tt-gde" kind="showDetail" identifier="AnimalDetail" id="xA5-7e-luR"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StaffCell" id="KDc-Hq-FRg" customClass="StaffCollectionViewCell" customModule="ZooKeeper" customModuleProvider="target">
@@ -98,7 +98,7 @@
                                         <connections>
                                             <outlet property="staffImage" destination="roU-8U-Gda" id="pPm-U5-bO7"/>
                                             <outlet property="staffLabel" destination="614-3x-FDg" id="aA7-Wo-1uu"/>
-                                            <segue destination="mND-ub-KyF" kind="showDetail" id="Fzk-9s-tWx"/>
+                                            <segue destination="mND-ub-KyF" kind="showDetail" identifier="StaffDetail" id="Fzk-9s-tWx"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -23,6 +23,7 @@ class AnimalViewController: DetailViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+		ZooData.sharedInstance.saveZoo()
     }
     
     // MARK: Actions
@@ -34,10 +35,12 @@ class AnimalViewController: DetailViewController {
 		animal.currentWeight = Float(weightTextField.text!)
 		animal.isMale = maleFemaleSwitch.selectedSegmentIndex == 0 ? true : false
 		animal.birthday = birthdayDatePicker.date
+		
 		ZooData.sharedInstance.saveZoo()
     }
+	
     @IBAction func cameraTouched(sender: AnyObject) {
-        guard let animal = detailItem as? Animal else {return}
+        guard let animal = detailItem as? Animal else { return }
         
         if animal.loadImage() == nil {
             CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
@@ -57,12 +60,15 @@ class AnimalViewController: DetailViewController {
         nameTextField?.text = animal.name
         colorTextField?.text = animal.color
         if let weight = animal.currentWeight {
-            weightTextField?.text = NSString(format: "%0.2", weight) as String
+            weightTextField?.text = NSString(format: "%0.2f", weight) as String
         } else {
             weightTextField?.text = ""
         }
         maleFemaleSwitch?.selectedSegmentIndex = animal.isMale ? 0 : 1
         photoImageView?.image = animal.loadImage() ?? UIImage(named: "camera")
+		if let birthday = animal.birthday {
+			birthdayDatePicker.date = birthday
+		}
 		ZooData.sharedInstance.saveZoo()
     }
 }

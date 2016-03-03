@@ -15,6 +15,9 @@ protocol Quackable {
 protocol Spawnable {
     func spawn()
 }
+
+let dateFormatString = "dd-MM-yy"
+
 /**
  A class that contains a name, color, legCount?, and isMale
 */
@@ -55,7 +58,7 @@ public class Animal {
 	public func saveImage(image: UIImage) -> Bool {
 		if let data = UIImageJPEGRepresentation(image, 0.8) {
 			photoFileName = NSUUID().UUIDString + ".jpg"
-			let path = pathToFileInDocumentsDirectory(photoFileName!)
+			let path = CTHPathToFileInDocumentsDirectory(photoFileName!)
 			return data.writeToFile(path, atomically: true)
 		}
 	return false
@@ -63,14 +66,39 @@ public class Animal {
 	
 	public func loadImage() -> UIImage? {
 		guard let filename = photoFileName,
-			let path = pathToExistingFileInDocumentsDirectory(filename),
+			let path = CTHPathToExistingFileInDocumentsDirectory(filename),
 			let image = UIImage(contentsOfFile: path) else { return nil }
 		
 		return image
 	}
+	
+	private func birthdayString() -> String? {
+		guard let day = birthday else {return nil}
+		
+		let formatter = NSDateFormatter()
+		formatter.dateFormat = dateFormatString
+		return formatter.stringFromDate(day)
+	}
+	
+	public static func dateFromString(string: String?) -> NSDate? {
+		guard let string = string else {return nil}
+		
+		let formatter = NSDateFormatter()
+		formatter.dateFormat = dateFormatString
+		return formatter.dateFromString(string)
+	}
+	
 	// Maps Json Objects to Swift Objects
 	public func toDictionary() -> [String: AnyObject] {
-		return ["type": type, "name": name, "color": color, "isMale": isMale, "photoFileName": photoFileName ?? ""]
+		return [
+				"type": type,
+				"name": name,
+				"color": color,
+				"isMale": isMale,
+				"currentWeight": currentWeight ?? -1,
+				"birthday" : birthdayString() ?? "",
+				"photoFileName": photoFileName ?? ""
+		]
 	}
 }
 
@@ -79,8 +107,8 @@ public class Duck : Animal, Quackable {
     public init(name: String, color: String, isMale: Bool) {
         super.init(type: "Duck", name: name, color: color, isMale: isMale)
     }
-    /// This prints a duck quack
-    public func quack() {
+
+	public func quack() {
         print("Quack")
     }
 }
@@ -90,8 +118,8 @@ public class Fish : Animal, Spawnable {
     public init(name: String, color: String, isMale: Bool) {
         super.init(type: "Fish", name: name, color: color, isMale: isMale)
     }
-    /// spawns a fish
-    public func spawn() {
+
+	public func spawn() {
         print("long trip ahead...")
     }
 }

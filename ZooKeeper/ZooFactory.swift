@@ -14,7 +14,7 @@ public class ZooFactory {
 		// Check to see if we have one in the docs dir
 		var storePath: String!
 		
-		if let path = pathToExistingFileInDocumentsDirectory(name + ".json") {
+		if let path = CTHPathToExistingFileInDocumentsDirectory(name + ".json") {
 			storePath = path
 		} else if let path = NSBundle.mainBundle().pathForResource(name, ofType: "json") {
 			storePath = path
@@ -67,6 +67,15 @@ public class ZooFactory {
 			staff?.photoFileName = photoPath
 		}
 		
+		let currentWeight: Float = json["currentWeight"].floatValue
+		if currentWeight > 0 {
+			staff?.currentWeight = currentWeight
+		}
+		
+		if let birthdayString = json["birthday"].string where !birthdayString.isEmpty {
+			staff?.birthday = Staff.dateFromString(birthdayString)
+		}
+		
 		return staff
     }
     
@@ -98,11 +107,20 @@ public class ZooFactory {
 			animal?.photoFileName = photoPath
 		}
 		
+		let currentWeight: Float = json["currentWeight"].floatValue
+		if currentWeight > 0 {
+			animal?.currentWeight = currentWeight
+		}
+		
+		if let birthdayString = json["birthday"].string where !birthdayString.isEmpty {
+			animal?.birthday = Animal.dateFromString(birthdayString)
+		}
+		
 		return animal
     }
 	
 	public static func saveZoo(zoo: Zoo, toFileNamed name: String) -> Bool {
-		let path = pathToFileInDocumentsDirectory(name + ".json")
+		let path = CTHPathToFileInDocumentsDirectory(name + ".json")
 		let json = JSON(zoo.toDictionary())
 		let str = json.description
 		
