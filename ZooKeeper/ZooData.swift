@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Firebase
+
+let kFirebaseAppId = "cthzookeeper"
 
 enum ZooDataNotifications: String {
 	case Updated = "com.ctharper.zoodata.Updated"
@@ -17,6 +20,8 @@ public class ZooData {
     public static let sharedInstance = ZooData()
     
     private let dataFileName = "zoo"
+	
+	let rootRef = Firebase(url: "https://\(kFirebaseAppId).firebaseio.com/")
     
     public var zoo: Zoo
     

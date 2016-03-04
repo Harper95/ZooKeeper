@@ -26,6 +26,12 @@
 		34AC1E451C6D8F3F009B26FF /* StaffTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E441C6D8F3F009B26FF /* StaffTest.swift */; };
 		34AC1E471C6D90BA009B26FF /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E461C6D90BA009B26FF /* StaffViewController.swift */; };
 		34AC1E491C6D90D3009B26FF /* StaffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */; };
+		34AE1B421C8944C800BB6C10 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AE1B411C8944C800BB6C10 /* Firebase.framework */; };
+		34AE1B441C89451D00BB6C10 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AE1B431C89451D00BB6C10 /* CFNetwork.framework */; };
+		34AE1B461C89452700BB6C10 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AE1B451C89452700BB6C10 /* Security.framework */; };
+		34AE1B481C89453700BB6C10 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AE1B471C89453700BB6C10 /* SystemConfiguration.framework */; };
+		34AE1B4A1C89456400BB6C10 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AE1B491C89456400BB6C10 /* libc++.tbd */; };
+		34AE1B4C1C89457300BB6C10 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AE1B4B1C89457300BB6C10 /* libicucore.tbd */; };
 		34B00EBF1C88152B007918CE /* ImageGalleryTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B00EBE1C88152B007918CE /* ImageGalleryTestCase.swift */; };
 		34E289D01C76B2DF006BA53D /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E289CE1C76B2DF006BA53D /* StaffCollectionViewCell.swift */; };
 		34E289D31C76B752006BA53D /* GalleryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E289D21C76B752006BA53D /* GalleryHeaderCollectionReusableView.swift */; };
@@ -83,6 +89,12 @@
 		34AC1E441C6D8F3F009B26FF /* StaffTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTest.swift; sourceTree = "<group>"; };
 		34AC1E461C6D90BA009B26FF /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		34AC1E481C6D90D3009B26FF /* StaffTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffTableViewCell.swift; sourceTree = "<group>"; };
+		34AE1B411C8944C800BB6C10 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = SOURCE_ROOT; };
+		34AE1B431C89451D00BB6C10 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		34AE1B451C89452700BB6C10 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		34AE1B471C89453700BB6C10 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		34AE1B491C89456400BB6C10 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		34AE1B4B1C89457300BB6C10 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		34B00EBE1C88152B007918CE /* ImageGalleryTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGalleryTestCase.swift; sourceTree = "<group>"; };
 		34E289CE1C76B2DF006BA53D /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
 		34E289D21C76B752006BA53D /* GalleryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -102,7 +114,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34AE1B4C1C89457300BB6C10 /* libicucore.tbd in Frameworks */,
+				34AE1B4A1C89456400BB6C10 /* libc++.tbd in Frameworks */,
+				34AE1B481C89453700BB6C10 /* SystemConfiguration.framework in Frameworks */,
+				34AE1B461C89452700BB6C10 /* Security.framework in Frameworks */,
+				34AE1B441C89451D00BB6C10 /* CFNetwork.framework in Frameworks */,
 				34A9636E1C64541A00CCCA56 /* SwiftyJSON.framework in Frameworks */,
+				34AE1B421C8944C800BB6C10 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +164,7 @@
 		34A9633C1C64501400CCCA56 /* ZooKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				34A963481C64501400CCCA56 /* LaunchScreen.storyboard */,
 				34A963431C64501400CCCA56 /* Main.storyboard */,
 				34A9633D1C64501400CCCA56 /* AppDelegate.swift */,
 				34F6131A1C75784C002320C2 /* TopMenuViewController.swift */,
@@ -160,9 +179,14 @@
 				34AC1E4B1C6D916A009B26FF /* Staff */,
 				34A963701C6455BB00CCCA56 /* Json */,
 				34A963461C64501400CCCA56 /* Assets.xcassets */,
-				34A963481C64501400CCCA56 /* LaunchScreen.storyboard */,
 				34A9634B1C64501400CCCA56 /* Info.plist */,
 				34A9636D1C64541A00CCCA56 /* SwiftyJSON.framework */,
+				34AE1B451C89452700BB6C10 /* Security.framework */,
+				34AE1B431C89451D00BB6C10 /* CFNetwork.framework */,
+				34AE1B471C89453700BB6C10 /* SystemConfiguration.framework */,
+				34AE1B411C8944C800BB6C10 /* Firebase.framework */,
+				34AE1B491C89456400BB6C10 /* libc++.tbd */,
+				34AE1B4B1C89457300BB6C10 /* libicucore.tbd */,
 			);
 			path = ZooKeeper;
 			sourceTree = "<group>";
@@ -550,6 +574,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ZooKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -568,6 +593,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ZooKeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+		Firebase.defaultConfig().persistenceEnabled = true
+		
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
