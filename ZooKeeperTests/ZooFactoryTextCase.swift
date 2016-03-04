@@ -43,5 +43,5 @@ class ZooFactoryTextCase: XCTestCase {
 			XCTFail("should have staff in zoo")
 		}
 	}
-	
+		
 }
