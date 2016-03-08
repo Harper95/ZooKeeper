@@ -22,7 +22,7 @@ class StaffViewController: DetailViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-		ZooData.sharedInstance.saveZoo()
+//		ZooData.sharedInstance.saveZoo()
     }
     
     // MARK: Actions
@@ -34,12 +34,12 @@ class StaffViewController: DetailViewController {
 		staff.isMale = maleFemaleSwitchStaff.selectedSegmentIndex == 0 ? true : false
 		staff.birthday = birthdayDatePickerStaff.date
 		
-		ZooData.sharedInstance.saveZoo()
+//		ZooData.sharedInstance.saveZoo()
     }
     @IBAction func cameraTouched(sender: AnyObject) {
 		guard let staff = detailItem as? Staff else { return }
 		
-		if staff.loadImage() == nil {
+		if !staff.hasCustomImage() {
 			CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
 		} else {
 			CTHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image", okCallback: { () -> Void in
@@ -61,11 +61,11 @@ class StaffViewController: DetailViewController {
 			weightTextFieldStaff?.text = ""
 		}
 		maleFemaleSwitchStaff?.selectedSegmentIndex = staff.isMale ? 0 : 1
-		photoImageViewStaff?.image = staff.loadImage() ?? UIImage(named: "camera")
+		photoImageViewStaff?.image = staff.getImage() ?? UIImage(named: "camera")
 		if let birthday = staff.birthday {
 			birthdayDatePickerStaff.date = birthday
 		}
-		ZooData.sharedInstance.saveZoo()
+//		ZooData.sharedInstance.saveZoo()
     }
 }
 

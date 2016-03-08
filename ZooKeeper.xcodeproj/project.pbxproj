@@ -166,11 +166,11 @@
 			children = (
 				34A963481C64501400CCCA56 /* LaunchScreen.storyboard */,
 				34A963431C64501400CCCA56 /* Main.storyboard */,
+				34F6131C1C757C56002320C2 /* Modals.storyboard */,
 				34A9633D1C64501400CCCA56 /* AppDelegate.swift */,
 				34F6131A1C75784C002320C2 /* TopMenuViewController.swift */,
 				34A9633F1C64501400CCCA56 /* ZooTableViewController.swift */,
 				34A963411C64501400CCCA56 /* DetailViewController.swift */,
-				34F6131C1C757C56002320C2 /* Modals.storyboard */,
 				34F6131E1C757C6D002320C2 /* ImageGalleryViewController.swift */,
 				34E289D21C76B752006BA53D /* GalleryHeaderCollectionReusableView.swift */,
 				34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */,

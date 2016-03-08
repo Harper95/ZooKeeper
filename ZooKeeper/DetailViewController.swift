@@ -11,7 +11,7 @@ import UIKit
 // The blank opening View Controller
 class DetailViewController: UIViewController {
 
-    var detailItem: AnyObject? {
+	var detailItem: AnyObject? {
         didSet {
             // Update the view.
             self.configureView()

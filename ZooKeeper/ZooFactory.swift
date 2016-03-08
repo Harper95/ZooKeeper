@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Firebase
 
 public class ZooFactory {
 	public static func zooFromJsonFileNamed(name: String) -> Zoo? {
@@ -29,6 +30,7 @@ public class ZooFactory {
                 
                 if let animals = json["animals"].array {
                     for ii in animals {
+						
                         if let object = animalFromJSON(ii) {
                             zoo.animals.append(object)
                         }
@@ -62,9 +64,9 @@ public class ZooFactory {
             return nil
         }
 		
-		let photoPath: String = json["photoFileName"].stringValue
+		let photoPath: String = json["imageBase64String"].stringValue
 		if !photoPath.isEmpty {
-			staff?.photoFileName = photoPath
+			staff?.imageBase64String = photoPath
 		}
 		
 		let currentWeight: Float = json["currentWeight"].floatValue
@@ -102,9 +104,9 @@ public class ZooFactory {
             return nil
         }
 		
-		let photoPath: String = json["photoFileName"].stringValue
+		let photoPath: String = json["imageBase64String"].stringValue
 		if !photoPath.isEmpty {
-			animal?.photoFileName = photoPath
+			animal?.imageBase64String = photoPath
 		}
 		
 		let currentWeight: Float = json["currentWeight"].floatValue
@@ -133,4 +135,26 @@ public class ZooFactory {
 		}
 		return true
 	}
+}
+
+// MARK - Firebase Helpers
+
+extension ZooFactory {
+	
+	public static func pushZooToFirebase(rootRef: Firebase, zoo: Zoo) {
+		
+		let animalsListRef = rootRef.childByAppendingPath("animals")
+		let staffListRef = rootRef.childByAppendingPath("staff")
+		
+		for animal in zoo.animals {
+			let animalRef = animalsListRef.childByAutoId()
+			animalRef.setValue(animal.toDictionary())
+		}
+		
+		for staff in zoo.staff {
+			let staffRef = staffListRef.childByAutoId()
+			staffRef.setValue(staff.toDictionary())
+		}
+	}
+	
 }

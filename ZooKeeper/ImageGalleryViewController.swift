@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Firebase
+
+struct AnimalImage {
+	var key: String
+	var name: String
+	var imageString: String
+}
 
 class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 	
     @IBOutlet weak var imageColletionView: UICollectionView!
 	
 	var detailViewController: DetailViewController? = nil
+	var animalImages = [AnimalImage]()
 	var zoo: Zoo!
 	
     override func viewDidLoad() {
@@ -31,7 +39,18 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		imageColletionView.reloadData()
+		
+		let animalAvatarsRef = ZooData.sharedInstance.animalAvatarRef
+		animalAvatarsRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+			self.animalImages.removeAll()
+			for item in snapshot.children {
+				guard let item = item as? FDataSnapshot,
+					let name = item.value["name"] as? String,
+					let imageString = item.value["imageString"] as? String else { continue }
+				self.animalImages.append(AnimalImage(key: item.key, name: name, imageString: imageString))
+			}
+			self.imageColletionView.reloadData()
+		})
 	}
 	
 	func insertNewObject(sender: AnyObject) {
@@ -82,10 +101,13 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		if indexPath.section == animalKey {
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
-			let animal: Animal = zoo.animals[indexPath.row]
 			
-			cell.animalLabel.text = animal.name
-			cell.animalImage.image = animal.loadImage() ?? UIImage(named: "camera")
+			let animalImage = animalImages[indexPath.row]
+			cell.animalLabel.text = animalImage.name
+			if let data = NSData(base64EncodedString: animalImage.imageString, options: .IgnoreUnknownCharacters),
+				let image = UIImage(data: data) {
+					cell.animalImage.image = image
+			}
 			
 			return cell
 		} else {

@@ -9,35 +9,26 @@
 import UIKit
 
 class StaffTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var iconImageViewStaff: UIImageView!
-    @IBOutlet weak var topLabelStaff: UILabel!
-    @IBOutlet weak var bottomLabelStaff: UILabel!
-    
-    var staff: Staff?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        configureView()
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    func configureView() {
-        if let staff = staff {
-            topLabelStaff.text = staff.name
-            bottomLabelStaff.text = staff.report()
-            
-            if let _ = staff.loadImage() {
-                iconImageViewStaff.image = staff.loadImage()
-            } else {
-                iconImageViewStaff.image = staff.image()
-            }
-        }
-    }
+	
+	@IBOutlet weak var iconImageViewStaff: UIImageView!
+	@IBOutlet weak var topLabelStaff: UILabel!
+	@IBOutlet weak var bottomLabelStaff: UILabel!
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		// Initialization code
+	}
+	
+	override func setSelected(selected: Bool, animated: Bool) {
+		super.setSelected(selected, animated: animated)
+		
+		// Configure the view for the selected state
+	}
+	
+	func configureViewForStaff(staff: Staff) {
+		topLabelStaff.text = staff.name
+		bottomLabelStaff.text = staff.report()
+		iconImageViewStaff.image = staff.getImage()
+	}
 }
+

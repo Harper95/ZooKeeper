@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol Quackable {
     func quack()
@@ -28,17 +29,44 @@ public class Animal {
     var isMale: Bool
     var currentWeight: Float?
     var birthday: NSDate?
-	var photoFileName: String?
+	var imageBase64String: String?
+	
+	var key: String!
+	var ref: Firebase?
     
-    public init(type: String, name: String, color: String, isMale: Bool) {
+    init(type: String, name: String, color: String, isMale: Bool) {
         self.type = type
         self.name = name
         self.color = color
         self.isMale = isMale
+		self.key = nil
     }
-    
+	
+	init(snapshot: FDataSnapshot) {
+		key = snapshot.key
+		ref = snapshot.ref
+		type = snapshot.value["type"] as! String
+		name = snapshot.value["name"] as! String
+		color = snapshot.value["color"] as! String
+		isMale = snapshot.value["isMale"] as! Bool
+		
+		if let weight = snapshot.value["currenWeight"] as? Float where weight > 0 {
+			currentWeight = weight
+		}
+		
+		if let bDayString = snapshot.value["birthday"] as? String where !bDayString.isEmpty {
+			let formatter = NSDateFormatter()
+			formatter.dateFormat = dateFormatString
+			self.birthday = formatter.dateFromString(bDayString)
+		}
+		
+		if let string = snapshot.value["imageBase64String"] as? String where !string.isEmpty {
+			self.imageBase64String = string
+		}
+	}
+	
     deinit {
-        print("Oh No!")
+        print("Oh No \(name)!")
     }
     /**
      - Returns: A string descibing the animal
@@ -46,30 +74,38 @@ public class Animal {
     public func report() -> String {
         return "I'm a \(isMale ? "male" : "female") \(color) \(name) "
     }
-    
-    public func image() -> UIImage? {
-        return UIImage(named: type.lowercaseString)
-    }
 	
-	public func hasImage() -> Bool {
-		return photoFileName != nil
+	public func hasCustomImage() -> Bool {
+		return imageBase64String != nil
+	}
+	
+	public func getImage() -> UIImage? {
+		if let image = firebaseImage() {
+			return image
+		}
+		return UIImage(named: type.lowercaseString)
+	}
+	
+	public func firebaseImage() -> UIImage? {
+		guard let string = imageBase64String,
+			let data = NSData(base64EncodedString: string, options: .IgnoreUnknownCharacters),
+			let image = UIImage(data: data) else { return nil }
+		
+		return image
 	}
 	
 	public func saveImage(image: UIImage) -> Bool {
-		if let data = UIImageJPEGRepresentation(image, 0.8) {
-			photoFileName = NSUUID().UUIDString + ".jpg"
-			let path = CTHPathToFileInDocumentsDirectory(photoFileName!)
-			return data.writeToFile(path, atomically: true)
+		if let smallImage = image.normalizedImage().scaledInside(CGSize(width: 500, height: 500)),
+			let data = UIImageJPEGRepresentation(smallImage, 0.8) {
+				imageBase64String = data.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+				ref!.updateChildValues(["imageBase64String": imageBase64String!])
+				
+				let avatarRef = ZooData.sharedInstance.animalAvatarRef.childByAppendingPath(key)
+				avatarRef.setValue(["name": name, "imageString": self.imageBase64String!])
+				
+				return true
 		}
-	return false
-	}
-	
-	public func loadImage() -> UIImage? {
-		guard let filename = photoFileName,
-			let path = CTHPathToExistingFileInDocumentsDirectory(filename),
-			let image = UIImage(contentsOfFile: path) else { return nil }
-		
-		return image
+		return false
 	}
 	
 	private func birthdayString() -> String? {
@@ -97,8 +133,12 @@ public class Animal {
 				"isMale": isMale,
 				"currentWeight": currentWeight ?? -1,
 				"birthday" : birthdayString() ?? "",
-				"photoFileName": photoFileName ?? ""
+				"imageBase64String": imageBase64String ?? ""
 		]
+	}
+	
+	public func updateInFB() {
+		ref!.updateChildValues(toDictionary())
 	}
 }
 
