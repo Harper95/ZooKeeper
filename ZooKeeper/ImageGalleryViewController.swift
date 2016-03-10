@@ -15,12 +15,19 @@ struct AnimalImage {
 	var imageString: String
 }
 
+struct StaffImage {
+	var key: String
+	var name: String
+	var imageString: String
+}
+
 class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 	
     @IBOutlet weak var imageColletionView: UICollectionView!
 	
 	var detailViewController: DetailViewController? = nil
 	var animalImages = [AnimalImage]()
+	var staffImages = [StaffImage]()
 	var zoo: Zoo!
 	
     override func viewDidLoad() {
@@ -34,14 +41,14 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 			
 			self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
 		}
-		zoo = ZooData.sharedInstance.zoo
+		zoo = Zoo(animals: nil, staff: nil)
     }
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		let animalAvatarsRef = ZooData.sharedInstance.animalAvatarRef
-		animalAvatarsRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+		animalAvatarsRef.observeEventType(.Value, withBlock: { (snapshot: FDataSnapshot!) in
 			self.animalImages.removeAll()
 			for item in snapshot.children {
 				guard let item = item as? FDataSnapshot,
@@ -51,6 +58,18 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 			}
 			self.imageColletionView.reloadData()
 		})
+		
+		let staffAvatarsRef = ZooData.sharedInstance.staffAvatarRef
+		staffAvatarsRef.observeEventType(.Value, withBlock: { (snapshot: FDataSnapshot!) in
+			self.staffImages.removeAll()
+			for item in snapshot.children {
+				guard let item = item as? FDataSnapshot,
+					let name = item.value["name"] as? String,
+					let imageString = item.value["imageString"] as? String else { continue }
+				self.staffImages.append(StaffImage(key: item.key, name: name, imageString: imageString))
+		}
+		self.imageColletionView.reloadData()
+	})
 	}
 	
 	func insertNewObject(sender: AnyObject) {
@@ -61,13 +80,13 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 		)
 		
 		let animalAction = UIAlertAction(title: "Animal", style: .Default) { (action) in
-			let indexPath = NSIndexPath(forRow: 0, inSection: animalKey)
+			let indexPath = NSIndexPath(forRow: 0, inSection: animalSection)
 			self.zoo.animals.insert(Animal(type: "Species", name: "Name", color: "Color", isMale: true), atIndex: 0)
 			self.imageColletionView.insertItemsAtIndexPaths([indexPath])
 		}
 		
 		let staffAction = UIAlertAction(title: "Staff", style: .Default) { (action) in
-			let indexPath = NSIndexPath(forRow: 0, inSection: staffKey)
+			let indexPath = NSIndexPath(forRow: 0, inSection: animalSection)
 			self.zoo.staff.insert(Staff(type: "Occupation", name: "Name", isMale: true), atIndex: 0)
 			self.imageColletionView.insertItemsAtIndexPaths([indexPath])
 		}
@@ -89,9 +108,9 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		switch section {
-		case animalKey:
+		case animalSection:
 			return zoo.animals.count
-		case staffKey:
+		case staffSection:
 			return zoo.staff.count
 		default:
 			return 0
@@ -99,7 +118,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		if indexPath.section == animalKey {
+		if indexPath.section == animalSection {
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalCollectionViewCell
 			
 			let animalImage = animalImages[indexPath.row]
@@ -112,9 +131,13 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 			return cell
 		} else {
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StaffCell", forIndexPath: indexPath) as! StaffCollectionViewCell
-			let staff: Staff = zoo.staff[indexPath.row]
 			
-			cell.staffLabel.text = staff.name
+			let staffImage = staffImages[indexPath.row]
+			cell.staffLabel.text = staffImage.name
+			if let data = NSData(base64EncodedString: staffImage.imageString, options: .IgnoreUnknownCharacters),
+				let image = UIImage(data: data) {
+					cell.staffImage.image = image
+			}
 			
 			return cell
 		}
@@ -122,7 +145,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
 	
 	func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
 		let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "GalleryHeader", forIndexPath: indexPath) as! GalleryHeaderCollectionReusableView
-		header.nameLabel.text = indexPath.section == animalKey ? "Animals" : "Staff"
+		header.nameLabel.text = indexPath.section == animalSection ? "Animals" : "Staff"
 		return header
 	}
 	

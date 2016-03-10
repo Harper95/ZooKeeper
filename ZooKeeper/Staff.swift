@@ -115,8 +115,12 @@ public class Staff {
 			"imageBase64String": imageBase64String ?? ""
 		]
 	}
-
+	
+	public func updateInFB() {
+		ref!.updateChildValues(toDictionary())
+	}
 }
+
 public class ZooKeeper : Staff {
     public init(name: String, isMale: Bool) {
         super.init(type: "ZooKeeper", name: name, isMale: isMale)

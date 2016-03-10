@@ -20,9 +20,7 @@ class StaffViewController: DetailViewController {
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
-//		ZooData.sharedInstance.saveZoo()
     }
     
     // MARK: Actions
@@ -33,8 +31,7 @@ class StaffViewController: DetailViewController {
 		staff.currentWeight = Float(weightTextFieldStaff.text!)
 		staff.isMale = maleFemaleSwitchStaff.selectedSegmentIndex == 0 ? true : false
 		staff.birthday = birthdayDatePickerStaff.date
-		
-//		ZooData.sharedInstance.saveZoo()
+		staff.updateInFB()
     }
     @IBAction func cameraTouched(sender: AnyObject) {
 		guard let staff = detailItem as? Staff else { return }
@@ -42,11 +39,8 @@ class StaffViewController: DetailViewController {
 		if !staff.hasCustomImage() {
 			CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
 		} else {
-			CTHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image", okCallback: { () -> Void in
-				CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")
-				}) {									// Trailing Closure
-					print("User Cancelled")
-			}
+			CTHAlertFor(self, title: "Replace photo", message: "Are you sure you want to replace this image", okCallback: { () in
+				CTHPresentImageCapture(self, title: "Add Image", message: "Please choose a source")}, cancelCallback: nil)
 		}
     }
 	
@@ -65,7 +59,6 @@ class StaffViewController: DetailViewController {
 		if let birthday = staff.birthday {
 			birthdayDatePickerStaff.date = birthday
 		}
-//		ZooData.sharedInstance.saveZoo()
     }
 }
 

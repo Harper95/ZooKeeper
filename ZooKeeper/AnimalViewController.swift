@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AnimalViewController: DetailViewController {
     
@@ -18,14 +19,26 @@ class AnimalViewController: DetailViewController {
     @IBOutlet weak var birthdayDatePicker: UIDatePicker!
     @IBOutlet weak var photoImageView: UIImageView!
 	
+	var animalKey: String?
+	
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
-//		ZooData.sharedInstance.saveZoo()
     }
-    
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if let key = animalKey where detailItem == nil {
+			let ref = ZooData.sharedInstance.rootRef.childByAppendingPath("aniamls/\(key)")
+			ref.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+				self.detailItem = Animal(snapshot: snapshot)
+				self.configureView()
+			})
+		}
+	}
+	
     // MARK: Actions
     @IBAction func controlChanged(sender: AnyObject) {
 		guard let animal = detailItem as? Animal else { return }
@@ -36,7 +49,6 @@ class AnimalViewController: DetailViewController {
 		animal.isMale = maleFemaleSwitch.selectedSegmentIndex == 0 ? true : false
 		animal.birthday = birthdayDatePicker.date
 		animal.updateInFB()
-//		ZooData.sharedInstance.saveZoo()
     }
 	
     @IBAction func cameraTouched(sender: AnyObject) {
@@ -69,7 +81,6 @@ class AnimalViewController: DetailViewController {
 		if let birthday = animal.birthday {
 			birthdayDatePicker.date = birthday
 		}
-//		ZooData.sharedInstance.saveZoo()
     }
 }
 

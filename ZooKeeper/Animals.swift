@@ -98,7 +98,7 @@ public class Animal {
 		if let smallImage = image.normalizedImage().scaledInside(CGSize(width: 500, height: 500)),
 			let data = UIImageJPEGRepresentation(smallImage, 0.8) {
 				imageBase64String = data.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-				ref!.updateChildValues(["imageBase64String": imageBase64String!])
+				ref!.updateChildValues(["imageBase64String": self.imageBase64String!])
 				
 				let avatarRef = ZooData.sharedInstance.animalAvatarRef.childByAppendingPath(key)
 				avatarRef.setValue(["name": name, "imageString": self.imageBase64String!])

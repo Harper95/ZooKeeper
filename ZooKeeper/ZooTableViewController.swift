@@ -9,8 +9,8 @@
 import UIKit
 import Firebase
 
-let animalKey: Int = 0
-let  staffKey: Int = 1
+let animalSection: Int = 0
+let  staffSection: Int = 1
 
 class ZooTableViewController: UITableViewController {
 	
@@ -28,6 +28,7 @@ class ZooTableViewController: UITableViewController {
 		
         if let split = self.splitViewController {
             let controllers = split.viewControllers
+			
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
 		
@@ -133,9 +134,9 @@ class ZooTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case animalKey:
+        case animalSection:
             return zoo.animals.count
-        case staffKey:
+        case staffSection:
             return zoo.staff.count
         default:
             return 0
@@ -143,7 +144,7 @@ class ZooTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == animalKey {
+        if indexPath.section == animalSection {
             let cell = tableView.dequeueReusableCellWithIdentifier("AnimalCell", forIndexPath: indexPath) as! AnimalTableViewCell
             let animal: Animal = zoo.animals[indexPath.row]
             
@@ -164,10 +165,10 @@ class ZooTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            if indexPath.section == animalKey {
+            if indexPath.section == animalSection {
                 zoo.animals.removeAtIndex(indexPath.row)
             }
-            if indexPath.section == staffKey {
+            if indexPath.section == staffSection {
                 zoo.staff.removeAtIndex(indexPath.row)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
