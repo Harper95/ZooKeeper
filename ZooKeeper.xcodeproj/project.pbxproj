@@ -19,7 +19,7 @@
 		34A963551C64501400CCCA56 /* ZooKeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963541C64501400CCCA56 /* ZooKeeperTests.swift */; };
 		34A963601C64501400CCCA56 /* ZooKeeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9635F1C64501400CCCA56 /* ZooKeeperUITests.swift */; };
 		34A9636E1C64541A00CCCA56 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A9636D1C64541A00CCCA56 /* SwiftyJSON.framework */; };
-		34A963721C64565E00CCCA56 /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963711C64565E00CCCA56 /* Animals.swift */; };
+		34A963721C64565E00CCCA56 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A963711C64565E00CCCA56 /* Animal.swift */; };
 		34A963781C64592200CCCA56 /* zoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 34A963771C64592200CCCA56 /* zoo.json */; };
 		34AC1E3D1C6D800E009B26FF /* CTHHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */; };
 		34AC1E3F1C6D8AB6009B26FF /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1E3E1C6D8AB6009B26FF /* Staff.swift */; };
@@ -82,7 +82,7 @@
 		34A9635F1C64501400CCCA56 /* ZooKeeperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooKeeperUITests.swift; sourceTree = "<group>"; };
 		34A963611C64501400CCCA56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34A9636D1C64541A00CCCA56 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		34A963711C64565E00CCCA56 /* Animals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
+		34A963711C64565E00CCCA56 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		34A963771C64592200CCCA56 /* zoo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zoo.json; sourceTree = "<group>"; };
 		34AC1E3C1C6D800E009B26FF /* CTHHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTHHelper.swift; sourceTree = "<group>"; };
 		34AC1E3E1C6D8AB6009B26FF /* Staff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		34AC1E4A1C6D9157009B26FF /* Animal */ = {
 			isa = PBXGroup;
 			children = (
-				34A963711C64565E00CCCA56 /* Animals.swift */,
+				34A963711C64565E00CCCA56 /* Animal.swift */,
 				3409B2621C6C3F6900CE5211 /* AnimalViewController.swift */,
 				3409B25E1C6C325900CE5211 /* AnimalTableViewCell.swift */,
 				34F613201C757E5E002320C2 /* AnimalCollectionViewCell.swift */,
@@ -418,7 +418,7 @@
 				34AC1E3D1C6D800E009B26FF /* CTHHelper.swift in Sources */,
 				3409B2631C6C3F6900CE5211 /* AnimalViewController.swift in Sources */,
 				34AC1E471C6D90BA009B26FF /* StaffViewController.swift in Sources */,
-				34A963721C64565E00CCCA56 /* Animals.swift in Sources */,
+				34A963721C64565E00CCCA56 /* Animal.swift in Sources */,
 				3409B25F1C6C325900CE5211 /* AnimalTableViewCell.swift in Sources */,
 				34A963401C64501400CCCA56 /* ZooTableViewController.swift in Sources */,
 				34A9633E1C64501400CCCA56 /* AppDelegate.swift in Sources */,

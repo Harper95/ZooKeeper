@@ -109,7 +109,7 @@ public class Animal {
 	}
 	
 	private func birthdayString() -> String? {
-		guard let day = birthday else {return nil}
+		guard let day = birthday else { return nil }
 		
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = dateFormatString
@@ -117,7 +117,7 @@ public class Animal {
 	}
 	
 	public static func dateFromString(string: String?) -> NSDate? {
-		guard let string = string else {return nil}
+		guard let string = string else { return nil }
 		
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = dateFormatString

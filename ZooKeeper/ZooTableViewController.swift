@@ -173,7 +173,6 @@ class ZooTableViewController: UITableViewController {
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 		} 
-//		ZooData.sharedInstance.saveZoo()
     }
 }
 
