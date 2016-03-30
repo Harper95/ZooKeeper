@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 public class Staff {
     var type: String
@@ -14,16 +15,43 @@ public class Staff {
     var isMale: Bool
     var currentWeight: Float?
     var birthday: NSDate?
-    var photoFileName: String?
+	var imageBase64String: String?
+	
+	var key: String!
+	var ref: Firebase?
     
     public init(type: String, name: String, isMale: Bool) {
         self.type = type
         self.name = name
         self.isMale = isMale
+		self.key = nil
     }
-    
+	
+	init(snapshot: FDataSnapshot) {
+		key = snapshot.key
+		ref = snapshot.ref
+		type = snapshot.value["type"] as! String
+		name = snapshot.value["name"] as! String
+		isMale = snapshot.value["isMale"] as! Bool
+		currentWeight = snapshot.value["currenWeight"] as? Float
+		
+		if let weight = snapshot.value["currenWeight"] as? Float where weight > 0 {
+			currentWeight = weight
+		}
+		
+		if let bDayString = snapshot.value["birthday"] as? String where !bDayString.isEmpty {
+			let formatter = NSDateFormatter()
+			formatter.dateFormat = dateFormatString
+			self.birthday = formatter.dateFromString(bDayString)
+		}
+		
+		if let string = snapshot.value["imageBase64String"] as? String where !string.isEmpty {
+			self.imageBase64String = string
+		}
+	}
+	
     deinit {
-        print("Oh No!")
+        print("Oh No \(name)!")
     }
     /**
      - Returns: A string descibing the staff member
@@ -32,30 +60,32 @@ public class Staff {
         return "I'm a \(isMale ? "male" : "female") and my name is \(name) "
     }
     
-    public func image() -> UIImage? {
-        return UIImage(named: type.lowercaseString)
-    }
+	public func hasCustomImage() -> Bool {
+		return imageBase64String != nil
+	}
 	
-	public func hasImage() -> Bool {
-		return photoFileName != nil
+	public func getImage() -> UIImage? {
+		if let image = firebaseImage() {
+			return image
+		}
+		return UIImage(named: type.lowercaseString)
+	}
+	
+	private func firebaseImage() -> UIImage? {
+		guard let string = imageBase64String,
+			let data = NSData(base64EncodedString: string, options: .IgnoreUnknownCharacters),
+			let image = UIImage(data: data) else { return nil }
+		
+		return image
 	}
 	
 	public func saveImage(image: UIImage) -> Bool {
 		if let data = UIImageJPEGRepresentation(image, 0.8) {
-			photoFileName = NSUUID().UUIDString + ".jpg"
-			let path = CTHPathToFileInDocumentsDirectory(photoFileName!)
-			print("writing to \(path)")
-			return data.writeToFile(path, atomically: true)
+			imageBase64String = data.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+			ref!.updateChildValues(["imageBase64String": imageBase64String!])
+			return true
 		}
 		return false
-	}
-	
-	public func loadImage() -> UIImage? {
-		guard let filename = photoFileName,
-			let path = CTHPathToExistingFileInDocumentsDirectory(filename),
-			let image = UIImage(contentsOfFile: path) else { return nil }
-		
-		return image
 	}
 	
 	private func birthdayString() -> String? {
@@ -76,16 +106,21 @@ public class Staff {
 	
 	// Maps Json Objects to Swift Objects
 	public func toDictionary() -> [String: AnyObject] {
-		return ["type": type,
-				"name": name,
-				"isMale": isMale,
-				"currentWeight": currentWeight ?? -1,
-				"birthday" : birthdayString() ?? "",
-				"photoFileName": photoFileName ?? ""
+		return [
+			"type": type,
+			"name": name,
+			"isMale": isMale,
+			"currentWeight": currentWeight ?? -1,
+			"birthday" : birthdayString() ?? "",
+			"imageBase64String": imageBase64String ?? ""
 		]
 	}
-
+	
+	public func updateInFB() {
+		ref!.updateChildValues(toDictionary())
+	}
 }
+
 public class ZooKeeper : Staff {
     public init(name: String, isMale: Bool) {
         super.init(type: "ZooKeeper", name: name, isMale: isMale)

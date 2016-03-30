@@ -1,16 +1,16 @@
 {
     "animals" : [
-                 {"type": "Duck", "name":"Donald", "color":"yellow", "isMale" : true},
-                 {"type": "Duck", "name":"Darkwing", "color":"brown", "isMale" : false},
-                 {"type": "Fish", "name":"Jabber Jaw", "color":"blue", "isMale" : true},
-                 {"type": "Fish", "name":"Charlie", "color":"brown", "isMale" : false},
-                 {"type": "Bear", "name":"Yogi", "color":"yellow", "isMale" : true},
-                 {"type": "Lion", "name":"Lion-o", "color":"brown", "isMale" : true},
-                 {"type": "Seal", "name":"Jerry", "color":"blue", "isMale" : false}
-                 ],
+				 {"type": "Duck", "name":"Donald",       "color":"yellow",   "isMale" : true},
+				 {"type": "Duck", "name":"Darkwing",     "color":"brown",    "isMale" : false},
+				 {"type": "Fish", "name":"Jabber Jaw",   "color":"blue",     "isMale" : true},
+				 {"type": "Fish", "name":"Charlie",      "color":"brown",    "isMale" : false},
+				 {"type": "Bear", "name":"Yogi",         "color":"yellow",   "isMale" : true},
+				 {"type": "Lion", "name":"Lion-o",       "color":"brown",    "isMale" : true},
+				 {"type": "Seal", "name":"Jerry",        "color":"blue",     "isMale" : false}
+    ],
     
-    "staff" : [
-               {"type": "ZooKeeper", "name":"Pete", "isMale" : true},
-               {"type": "TicketTaker", "name":"Sally", "isMale" : false}
-               ]
+	"staff" : [
+                "Pete":     {"type": "ZooKeeper",   "name":"Pete",  "isMale" : true},
+                "Sally":    {"type": "TicketTaker", "name":"Sally", "isMale" : false}
+    ]
 }

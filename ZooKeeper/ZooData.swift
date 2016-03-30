@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Firebase
+
+let kFirebaseAppId = "cthzookeeper"
 
 enum ZooDataNotifications: String {
 	case Updated = "com.ctharper.zoodata.Updated"
@@ -15,24 +18,14 @@ enum ZooDataNotifications: String {
 public class ZooData {
 	// Creation of a singleton
     public static let sharedInstance = ZooData()
-    
-    private let dataFileName = "zoo"
+	
+	let rootRef = Firebase(url: "https://\(kFirebaseAppId).firebaseio.com/")
+	let animalAvatarRef = Firebase(url: "https://\(kFirebaseAppId).firebaseio.com/avatars/animals")
+	let staffAvatarRef = Firebase(url: "https://\(kFirebaseAppId).firebaseio.com/avatars/staff")
     
     public var zoo: Zoo
     
     private init() {
-        if let zoo = ZooFactory.zooFromJsonFileNamed(dataFileName) {
-            self.zoo = zoo
-        } else {
-            self.zoo = Zoo(animals: nil, staff: nil)
-        }
+		self.zoo = Zoo(animals: nil, staff: nil)
     }
-	
-	public func saveZoo() -> Bool {
-		let result = ZooFactory.saveZoo(zoo, toFileNamed: dataFileName)
-		if result {
-			NSNotificationCenter.defaultCenter().postNotificationName(ZooDataNotifications.Updated.rawValue, object: nil)
-		}
-		return result
-	}
 }
