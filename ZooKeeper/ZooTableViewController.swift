@@ -23,7 +23,7 @@ class ZooTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ZooTableViewController.insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
 		
         if let split = self.splitViewController {
@@ -34,7 +34,7 @@ class ZooTableViewController: UITableViewController {
 		
         zoo = Zoo(animals: nil, staff: nil)
 		tableView.rowHeight = 85
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataUpdated:", name: ZooDataNotifications.Updated.rawValue, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZooTableViewController.dataUpdated(_:)), name: ZooDataNotifications.Updated.rawValue, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

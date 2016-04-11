@@ -24,7 +24,6 @@ class AnimalViewController: DetailViewController {
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 	
 	override func viewWillAppear(animated: Bool) {

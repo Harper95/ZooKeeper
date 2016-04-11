@@ -33,7 +33,7 @@ class ImageGalleryViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ImageGalleryViewController.insertNewObject(_:)))
 		self.navigationItem.rightBarButtonItem = addButton
 		
 		if let split = self.splitViewController {
